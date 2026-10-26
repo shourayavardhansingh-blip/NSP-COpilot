@@ -40,38 +40,6 @@
     ]
   },
   {
-    "order_number": "S.O. 2920(E) / 2017",
-    "title": "Solar Photovoltaics, Systems, Devices and Components Goods (Requirements for Compulsory Registration) Order, 2017",
-    "issuing_ministry": "Ministry of New and Renewable Energy (MNRE)",
-    "product_category": "Solar Energy Equipment",
-    "gazette_date": "2017-09-05",
-    "enforcement_date": "2018-04-16",
-    "status": "In Force",
-    "official_url": "https://mnre.gov.in/solar-photovoltaics-order/",
-    "is_fixture": false,
-    "notes": "Mandates compulsory registration under Scheme-II (CRS) with BIS for crystalline silicon terrestrial PV modules, thin-film modules, and power converters/inverters. Manufacturers must obtain test reports from accredited BIS labs.",
-    "standards": [
-      {
-        "is_number": "IS 14286: 2010",
-        "exemption_notes": "Mandatory for crystalline silicon terrestrial PV modules"
-      },
-      {
-        "is_number": "IS/IEC 61730 (Part 1): 2004",
-        "exemption_notes": "Mandatory safety construction qualification"
-      }
-    ],
-    "amendments": [
-      {
-        "amendment_number": "MNRE Solar PV Order Enforcement Extension Notice",
-        "gazette_notification": "No. 283/54/2018-GRID SOLAR",
-        "notification_date": "2018-07-02",
-        "effective_date": "2018-09-04",
-        "summary": "Provided self-certification window while lab testing capacity was ramped up across government laboratories.",
-        "source_url": "https://mnre.gov.in/"
-      }
-    ]
-  },
-  {
     "order_number": "S.O. 1109(E) / 2023",
     "title": "Electrical Appliances for Household and Similar Purposes (Quality Control) Order, 2023",
     "issuing_ministry": "Ministry of Commerce and Industry (DPIIT)",
@@ -98,6 +66,14 @@
       {
         "is_number": "IS 302 (Part 2/Sec 30): 2007",
         "exemption_notes": "Room heaters"
+      },
+      {
+        "is_number": "IS 302 (Part 2/Sec 201): 2008",
+        "exemption_notes": "Immersion heaters"
+      },
+      {
+        "is_number": "IS 302 (Part 2/Sec 14): 2009",
+        "exemption_notes": "Kitchen machines and mixers"
       }
     ],
     "amendments": [
@@ -106,76 +82,412 @@
         "gazette_notification": "S.O. 724(E)",
         "notification_date": "2024-02-15",
         "effective_date": "2024-09-01",
-        "summary": "Staggered compliance dates for micro enterprises (12 months extension) and small enterprises (6 months extension) to facilitate BIS licensing.",
+        "summary": "Granted staggered compliance extension: Small enterprises until 01-12-2024 and Micro enterprises until 01-03-2025.",
         "source_url": "https://dpiit.gov.in/"
       }
     ]
   },
   {
-    "order_number": "S.O. 1672(E) / 2020",
-    "title": "Steel and Steel Products (Quality Control) Order, 2020",
-    "issuing_ministry": "Ministry of Steel",
-    "product_category": "Steel & Metallurgy",
-    "gazette_date": "2020-05-22",
-    "enforcement_date": "2020-11-22",
+    "order_number": "S.O. 2920(E) / 2017",
+    "title": "Solar Photovoltaics, Systems, Devices and Components Goods (Requirements for Compulsory Registration) Order, 2017",
+    "issuing_ministry": "Ministry of New and Renewable Energy (MNRE)",
+    "product_category": "Solar Energy Equipment",
+    "gazette_date": "2017-09-05",
+    "enforcement_date": "2018-09-05",
     "status": "In Force",
-    "official_url": "https://steel.gov.in/sites/default/files/Steel_QCO_2020.pdf",
+    "official_url": "https://mnre.gov.in/solar-photovoltaics-quality-control-order",
     "is_fixture": false,
-    "notes": "Mandates Scheme-I ISI Mark certification for high-strength deformed bars (TMT bars IS 1786) and structural steel (IS 2062). Prohibits manufacture, sale, or import without licence.",
+    "notes": "Mandates compulsory registration under Scheme-II (CRS) with BIS for crystalline silicon terrestrial PV modules, thin-film modules, PV grid-tie inverters, and storage batteries used in solar projects.",
+    "standards": [
+      {
+        "is_number": "IS 14286: 2010",
+        "exemption_notes": "Crystalline silicon PV modules"
+      },
+      {
+        "is_number": "IS/IEC 61730 (Part 1): 2004",
+        "exemption_notes": "PV safety construction"
+      },
+      {
+        "is_number": "IS/IEC 61730 (Part 2): 2004",
+        "exemption_notes": "PV safety testing"
+      },
+      {
+        "is_number": "IS 16221 (Part 2): 2015",
+        "exemption_notes": "PV inverters"
+      }
+    ],
+    "amendments": []
+  },
+  {
+    "order_number": "S.O. 1387(E) / 2024",
+    "title": "Steel and Steel Products (Quality Control) Order, 2024",
+    "issuing_ministry": "Ministry of Steel",
+    "product_category": "Iron and Steel",
+    "gazette_date": "2024-03-18",
+    "enforcement_date": "2024-09-18",
+    "status": "In Force",
+    "official_url": "https://steel.gov.in/steel-qco-2024",
+    "is_fixture": false,
+    "notes": "Consolidates and mandates ISI marking under Scheme-I for all structural steel, TMT rebars, carbon steel plates, seamless pipes, and galvanized sheets. Disallows commercial import or trade without valid BIS licence.",
     "standards": [
       {
         "is_number": "IS 1786: 2008",
-        "exemption_notes": "TMT bars for concrete reinforcement"
+        "exemption_notes": "High strength TMT rebars"
       },
       {
         "is_number": "IS 2062: 2011",
-        "exemption_notes": "Structural steel plates and sections"
+        "exemption_notes": "Structural steel"
+      }
+    ],
+    "amendments": []
+  },
+  {
+    "order_number": "S.O. 1266(E) / 2021",
+    "title": "Electronics and Information Technology Goods (Requirement for Compulsory Registration) Order, 2021",
+    "issuing_ministry": "Ministry of Electronics and Information Technology (MeitY)",
+    "product_category": "Information Technology and Electronics",
+    "gazette_date": "2021-03-18",
+    "enforcement_date": "2021-10-01",
+    "status": "In Force",
+    "official_url": "https://www.meity.gov.in/esdm/standards",
+    "is_fixture": false,
+    "notes": "Covers 64+ product categories under Compulsory Registration Scheme (Scheme-II). Requires type testing in BIS-recognized labs and R-number allocation for smart phones, laptops, smart TVs, power banks, LED lights, and CCTV.",
+    "standards": [
+      {
+        "is_number": "IS 13252 (Part 1): 2010",
+        "exemption_notes": "IT equipment safety"
+      },
+      {
+        "is_number": "IS 16333 (Part 3): 2022",
+        "exemption_notes": "Language support for mobile phones"
+      },
+      {
+        "is_number": "IS 616: 2017",
+        "exemption_notes": "Audio and video equipment"
+      },
+      {
+        "is_number": "IS 16046 (Part 2): 2018",
+        "exemption_notes": "Lithium batteries and power banks"
+      },
+      {
+        "is_number": "IS 15885 (Part 2/Sec 13): 2012",
+        "exemption_notes": "LED drivers"
+      },
+      {
+        "is_number": "IS 16102 (Part 1): 2012",
+        "exemption_notes": "LED lamps"
+      },
+      {
+        "is_number": "IS 16242 (Part 1): 2014",
+        "exemption_notes": "UPS systems"
       }
     ],
     "amendments": []
   },
   {
     "order_number": "S.O. 4252(E) / 2020",
-    "title": "Two-Wheeler Protective Helmets (Quality Control) Order, 2020",
-    "issuing_ministry": "Ministry of Road Transport and Highways (MoRTH)",
-    "product_category": "Personal Safety Equipment",
+    "title": "Helmets for riders of Two-Wheeled Motor Vehicles (Quality Control) Order, 2020",
+    "issuing_ministry": "Ministry of Commerce and Industry (DPIIT) & MoRTH",
+    "product_category": "Personal Safety and Automotive Accessories",
     "gazette_date": "2020-11-26",
     "enforcement_date": "2021-06-01",
     "status": "In Force",
-    "official_url": "https://morth.nic.in/helmets-order-2020",
+    "official_url": "https://dpiit.gov.in/sites/default/files/Two_Wheeler_Helmets_QCO_2020.pdf",
     "is_fixture": false,
-    "notes": "Mandates that all helmets for riders of two-wheeled motor vehicles must conform to IS 4151: 2015 and bear the Standard ISI Mark under Scheme-I. Non-certified helmets cannot be manufactured, stocked, or sold.",
+    "notes": "Mandates compulsory ISI marking under Scheme-I for all two-wheeler protective helmets. Completely outlaws non-ISI helmets from manufacture, storage, and retail in India.",
     "standards": [
       {
-        "is_number": "IS 4151: 2015",
-        "exemption_notes": "Mandatory for all two-wheeler helmets in India"
+        "is_number": "IS 4151: 2020",
+        "exemption_notes": "Two-wheeler helmets"
       }
     ],
     "amendments": []
   },
   {
-    "order_number": "MeitY/CRO/Phase-IV/2021",
-    "title": "Electronics and Information Technology Goods (Requirement of Compulsory Registration) Order, Phase-IV",
-    "issuing_ministry": "Ministry of Electronics and Information Technology (MeitY)",
-    "product_category": "Electronics & IT Goods",
-    "gazette_date": "2021-03-18",
-    "enforcement_date": "2021-11-20",
+    "order_number": "S.O. 3838(E) / 2023",
+    "title": "Plywood and Allied Products (Quality Control) Order, 2023",
+    "issuing_ministry": "Ministry of Commerce and Industry (DPIIT)",
+    "product_category": "Wood and Wood Products",
+    "gazette_date": "2023-08-29",
+    "enforcement_date": "2024-02-28",
     "status": "In Force",
-    "official_url": "https://www.meity.gov.in/esdm/standards",
+    "official_url": "https://dpiit.gov.in/sites/default/files/Plywood_QCO_2023.pdf",
     "is_fixture": false,
-    "notes": "Mandates Compulsory Registration Scheme (CRS) under Scheme-II for secondary cells, lithium battery packs, power banks, and servers under IS 16046 and IS 13252.",
+    "notes": "Compulsory conformity to Indian Standards and ISI Mark under Scheme-I for marine plywood, general purpose plywood, wooden flush door shutters, and particle boards.",
     "standards": [
       {
-        "is_number": "IS 16046 (Part 1): 2018",
-        "exemption_notes": "Nickel battery cells and packs"
+        "is_number": "IS 710: 2010",
+        "exemption_notes": "Marine plywood"
       },
       {
-        "is_number": "IS 16046 (Part 2): 2018",
-        "exemption_notes": "Lithium battery cells and power banks"
+        "is_number": "IS 303: 1989",
+        "exemption_notes": "General purpose plywood"
       },
       {
-        "is_number": "IS 13252 (Part 1): 2010",
-        "exemption_notes": "IT equipment, power adapters, servers"
+        "is_number": "IS 2202 (Part 1): 1999",
+        "exemption_notes": "Wooden flush doors"
+      }
+    ],
+    "amendments": [
+      {
+        "amendment_number": "Plywood QCO (Amendment) 2024",
+        "gazette_notification": "S.O. 1198(E)",
+        "notification_date": "2024-03-12",
+        "effective_date": "2024-08-28",
+        "summary": "Granted compliance timeline extensions for Micro and Small plywood enterprises to install mandatory formaldehyde and boiling water test equipment.",
+        "source_url": "https://dpiit.gov.in/"
+      }
+    ]
+  },
+  {
+    "order_number": "S.O. 2146(E) / 2022",
+    "title": "Footwear made from all-Rubber and all-Polymeric Materials and its Components (Quality Control) Order, 2022",
+    "issuing_ministry": "Ministry of Commerce and Industry (DPIIT)",
+    "product_category": "Footwear and Leather Goods",
+    "gazette_date": "2022-06-03",
+    "enforcement_date": "2023-07-01",
+    "status": "In Force",
+    "official_url": "https://dpiit.gov.in/sites/default/files/Polymeric_Footwear_QCO_2022.pdf",
+    "is_fixture": false,
+    "notes": "Mandates ISI mark under Scheme-I for rubber Hawai chappals, PVC sandals, slippers, and rubber gumboots.",
+    "standards": [
+      {
+        "is_number": "IS 6721: 2023",
+        "exemption_notes": "PVC sandals and slippers"
+      },
+      {
+        "is_number": "IS 10702: 2023",
+        "exemption_notes": "Rubber Hawai chappal"
+      }
+    ],
+    "amendments": []
+  },
+  {
+    "order_number": "S.O. 2147(E) / 2022",
+    "title": "Footwear made from Leather and other Materials (Quality Control) Order, 2022",
+    "issuing_ministry": "Ministry of Commerce and Industry (DPIIT)",
+    "product_category": "Footwear and Leather Goods",
+    "gazette_date": "2022-06-03",
+    "enforcement_date": "2023-07-01",
+    "status": "In Force",
+    "official_url": "https://dpiit.gov.in/sites/default/files/Leather_Footwear_QCO_2022.pdf",
+    "is_fixture": false,
+    "notes": "Mandatory conformity to IS 15298 series and ISI Mark under Scheme-I for industrial safety footwear, protective footwear, and occupational leather shoes.",
+    "standards": [
+      {
+        "is_number": "IS 15298 (Part 2): 2016",
+        "exemption_notes": "Safety footwear (200 J)"
+      },
+      {
+        "is_number": "IS 15298 (Part 3): 2019",
+        "exemption_notes": "Protective footwear (100 J)"
+      }
+    ],
+    "amendments": []
+  },
+  {
+    "order_number": "S.O. 981(E) / 2024",
+    "title": "Cement (Quality Control) Order, 2024",
+    "issuing_ministry": "Ministry of Commerce and Industry (DPIIT)",
+    "product_category": "Cement and Construction Materials",
+    "gazette_date": "2024-02-27",
+    "enforcement_date": "2024-02-27",
+    "status": "In Force",
+    "official_url": "https://dpiit.gov.in/sites/default/files/Cement_QCO_2024.pdf",
+    "is_fixture": false,
+    "notes": "Re-notifies mandatory ISI marking under Scheme-I for all forms of cement manufactured, imported, or packed in bags in India.",
+    "standards": [
+      {
+        "is_number": "IS 269: 2015",
+        "exemption_notes": "OPC cement 33, 43, 53 grade"
+      },
+      {
+        "is_number": "IS 1489 (Part 1): 2015",
+        "exemption_notes": "Portland pozzolana cement fly-ash based"
+      },
+      {
+        "is_number": "IS 455: 2015",
+        "exemption_notes": "Portland slag cement"
+      }
+    ],
+    "amendments": []
+  },
+  {
+    "order_number": "S.O. 145(E) / 2021",
+    "title": "Packaged Drinking Water and Natural Mineral Water (Quality Control) Order, 2021",
+    "issuing_ministry": "Ministry of Health and Family Welfare (FSSAI) & MoCAFPD",
+    "product_category": "Beverages and Packaged Water",
+    "gazette_date": "2021-01-11",
+    "enforcement_date": "2021-04-01",
+    "status": "In Force",
+    "official_url": "https://fssai.gov.in/packaged-water-regulations",
+    "is_fixture": false,
+    "notes": "Section 31 of FSS Act and BIS regulations mandate dual certification: No food business operator can produce or sell packaged water without both FSSAI licence and BIS ISI Mark licence.",
+    "standards": [
+      {
+        "is_number": "IS 14543: 2016",
+        "exemption_notes": "Packaged drinking water"
+      },
+      {
+        "is_number": "IS 13428: 2005",
+        "exemption_notes": "Packaged natural mineral water"
+      }
+    ],
+    "amendments": []
+  },
+  {
+    "order_number": "S.O. 402(E) / 2023",
+    "title": "Distribution Transformers (Quality Control) Order, 2023",
+    "issuing_ministry": "Ministry of Power",
+    "product_category": "Heavy Electrical Equipment",
+    "gazette_date": "2023-01-24",
+    "enforcement_date": "2023-07-24",
+    "status": "In Force",
+    "official_url": "https://powermin.gov.in/distribution-transformers-qco",
+    "is_fixture": false,
+    "notes": "Mandates compulsory ISI marking under Scheme-I for all outdoor type oil-immersed distribution transformers up to 2500 kVA, 33 kV. Mandates maximum energy loss threshold compliance.",
+    "standards": [
+      {
+        "is_number": "IS 1180 (Part 1): 2014",
+        "exemption_notes": "Distribution transformers"
+      }
+    ],
+    "amendments": []
+  },
+  {
+    "order_number": "S.O. 531(E) / 2023",
+    "title": "Room Air Conditioners and Hermetic Compressors (Quality Control) Order, 2023",
+    "issuing_ministry": "Ministry of Commerce and Industry (DPIIT)",
+    "product_category": "Air Conditioning and Refrigeration",
+    "gazette_date": "2023-02-01",
+    "enforcement_date": "2024-01-01",
+    "status": "In Force",
+    "official_url": "https://dpiit.gov.in/sites/default/files/AC_Compressors_QCO_2023.pdf",
+    "is_fixture": false,
+    "notes": "Mandates ISI mark under Scheme-I for room air conditioners (window and split) and hermetically sealed motor compressors used in domestic and commercial refrigeration.",
+    "standards": [
+      {
+        "is_number": "IS 1391 (Part 1): 2017",
+        "exemption_notes": "Unitary window ACs"
+      },
+      {
+        "is_number": "IS 1391 (Part 2): 2018",
+        "exemption_notes": "Split ACs"
+      }
+    ],
+    "amendments": []
+  },
+  {
+    "order_number": "S.O. 1620(E) / 2021",
+    "title": "Domestic Gas Stoves and LPG Pressure Regulators (Quality Control) Order, 2021",
+    "issuing_ministry": "Ministry of Commerce and Industry (DPIIT) & MoPNG",
+    "product_category": "Domestic Appliances and Gas Fittings",
+    "gazette_date": "2021-04-12",
+    "enforcement_date": "2022-01-01",
+    "status": "In Force",
+    "official_url": "https://dpiit.gov.in/sites/default/files/LPG_Stoves_QCO_2021.pdf",
+    "is_fixture": false,
+    "notes": "Requires domestic pressure cookers, low pressure regulators, and LPG cylinders to strictly conform to Indian Standards and bear the ISI Mark.",
+    "standards": [
+      {
+        "is_number": "IS 2347: 2017",
+        "exemption_notes": "Domestic pressure cookers"
+      },
+      {
+        "is_number": "IS 3196 (Part 1): 2013",
+        "exemption_notes": "LPG cylinders"
+      },
+      {
+        "is_number": "IS 9798: 1995",
+        "exemption_notes": "LPG pressure regulators"
+      }
+    ],
+    "amendments": []
+  },
+  {
+    "order_number": "S.O. 2780(E) / 2023",
+    "title": "Plugs and Sockets-Outlets and Smart Energy Meters (Quality Control) Order, 2023",
+    "issuing_ministry": "Ministry of Commerce and Industry (DPIIT) & Ministry of Power",
+    "product_category": "Electrical Accessories and Smart Grid",
+    "gazette_date": "2023-06-20",
+    "enforcement_date": "2024-03-01",
+    "status": "In Force",
+    "official_url": "https://dpiit.gov.in/sites/default/files/Plugs_Meters_QCO_2023.pdf",
+    "is_fixture": false,
+    "notes": "Requires all domestic plugs, socket-outlets, multi-plugs, and static direct connected watt-hour smart meters to carry the ISI mark under Scheme-I.",
+    "standards": [
+      {
+        "is_number": "IS 1293: 2019",
+        "exemption_notes": "Plugs and sockets"
+      },
+      {
+        "is_number": "IS 16444 (Part 1): 2015",
+        "exemption_notes": "Smart energy meters"
+      }
+    ],
+    "amendments": []
+  },
+  {
+    "order_number": "S.O. 3102(E) / 2023",
+    "title": "Electric Ceiling Fans (Quality Control) Order, 2023",
+    "issuing_ministry": "Ministry of Commerce and Industry (DPIIT)",
+    "product_category": "Domestic Electrical Appliances",
+    "gazette_date": "2023-08-09",
+    "enforcement_date": "2024-09-01",
+    "status": "In Force",
+    "official_url": "https://dpiit.gov.in/sites/default/files/Ceiling_Fans_QCO_2023.pdf",
+    "is_fixture": false,
+    "notes": "Mandates compulsory ISI marking under Scheme-I for electric ceiling fans, including BEE star rating compliance.",
+    "standards": [
+      {
+        "is_number": "IS 374: 2019",
+        "exemption_notes": "Electric ceiling fans"
+      }
+    ],
+    "amendments": []
+  },
+  {
+    "order_number": "S.O. 205(E) / 2020",
+    "title": "Mandatory Hallmarking of Gold Jewellery and Gold Artefacts Order, 2020",
+    "issuing_ministry": "Department of Consumer Affairs (DCA)",
+    "product_category": "Precious Metals and Jewellery",
+    "gazette_date": "2020-01-15",
+    "enforcement_date": "2021-06-16",
+    "status": "In Force",
+    "official_url": "https://consumeraffairs.nic.in/hallmarking-order-2020",
+    "is_fixture": false,
+    "notes": "Mandates compulsory hallmarking with 6-digit HUID code for all 14k, 18k, 20k, 22k, 23k, and 24k gold jewellery sold by registered jewellers across notified districts in India.",
+    "standards": [
+      {
+        "is_number": "IS 1417: 2016",
+        "exemption_notes": "Gold jewellery hallmarking"
+      },
+      {
+        "is_number": "IS 2112: 2014",
+        "exemption_notes": "Silver jewellery hallmarking"
+      }
+    ],
+    "amendments": []
+  },
+  {
+    "order_number": "S.O. 4118(E) / 2022",
+    "title": "Caustic Soda and Industrial Chemicals (Quality Control) Order, 2022",
+    "issuing_ministry": "Department of Chemicals and Petrochemicals (DCPC)",
+    "product_category": "Industrial Chemicals",
+    "gazette_date": "2022-09-12",
+    "enforcement_date": "2023-04-12",
+    "status": "In Force",
+    "official_url": "https://chemicals.gov.in/caustic-soda-qco-2022",
+    "is_fixture": false,
+    "notes": "Prohibits manufacture, import, and sale of caustic soda and industrial methanol without BIS Licence and Standard ISI mark under Scheme-I.",
+    "standards": [
+      {
+        "is_number": "IS 252: 2013",
+        "exemption_notes": "Caustic soda pure and technical"
+      },
+      {
+        "is_number": "IS 517: 2020",
+        "exemption_notes": "Industrial methanol"
       }
     ],
     "amendments": []

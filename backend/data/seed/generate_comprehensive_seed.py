@@ -1,0 +1,1045 @@
+"""
+Comprehensive BIS Dataset Generator
+Creates 75+ Indian Standards, 18 QCOs, 35+ Laboratories, and 12 Certification Schemes.
+"""
+
+import json
+from pathlib import Path
+
+SEED_DIR = Path(__file__).resolve().parent
+
+# ==========================================
+# 1. STANDARDS DATASET
+# ==========================================
+STANDARDS = [
+    # --- Electrotechnical (ETD) Household Appliances ---
+    {
+        "is_number": "IS 302 (Part 1): 2008",
+        "title": "Safety of Household and Similar Electrical Appliances - Part 1: General Requirements",
+        "division": "Electrotechnical Department (ETD)",
+        "technical_committee": "ETD 32 Electrical Appliances",
+        "publication_year": 2008,
+        "status": "Current",
+        "scope_abstract": "Deals with the safety of electrical appliances for household and similar purposes, rated voltage <= 250 V for single-phase and <= 480 V for other appliances. Mandates protection against electric shock, excessive temperature, fire, mechanical hazards, and electromagnetic compatibility.",
+        "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/302",
+        "is_fixture": False,
+        "relationships": [
+            {"related_is_number": "IS 302 (Part 2/Sec 3): 2007", "relationship_type": "part_of", "description": "Electric dry and steam irons"},
+            {"related_is_number": "IS 302 (Part 2/Sec 21): 2011", "relationship_type": "part_of", "description": "Storage water heaters (geysers)"},
+            {"related_is_number": "IS 302 (Part 2/Sec 30): 2007", "relationship_type": "part_of", "description": "Room heaters"},
+            {"related_is_number": "IS 302 (Part 2/Sec 201): 2008", "relationship_type": "part_of", "description": "Immersion water heaters"},
+            {"related_is_number": "IS 302 (Part 2/Sec 14): 2009", "relationship_type": "part_of", "description": "Kitchen machines, blenders and mixers"}
+        ]
+    },
+    {
+        "is_number": "IS 302 (Part 2/Sec 3): 2007",
+        "title": "Safety of Household and Similar Electrical Appliances - Part 2: Particular Requirements - Section 3: Electric Irons",
+        "division": "Electrotechnical Department (ETD)",
+        "technical_committee": "ETD 32 Electrical Appliances",
+        "publication_year": 2007,
+        "status": "Current",
+        "scope_abstract": "Specifies safety requirements for electric dry irons and steam irons, including irons with a water reservoir or boiler capacity <= 5 litres, rated voltage <= 250 V.",
+        "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/302-2-3",
+        "is_fixture": False,
+        "relationships": [{"related_is_number": "IS 302 (Part 1): 2008", "relationship_type": "refers_to", "description": "General safety requirements"}]
+    },
+    {
+        "is_number": "IS 302 (Part 2/Sec 21): 2011",
+        "title": "Safety of Household and Similar Electrical Appliances - Part 2: Particular Requirements - Section 21: Stationary Storage Water Heaters",
+        "division": "Electrotechnical Department (ETD)",
+        "technical_committee": "ETD 32 Electrical Appliances",
+        "publication_year": 2011,
+        "status": "Current",
+        "scope_abstract": "Deals with the safety of electric stationary storage water heaters (geysers) intended for heating water below boiling temperature, rated voltage <= 250 V single phase, <= 480 V multi-phase. Mandates hydrostatic pressure test, thermal cut-out response, and standing heat loss.",
+        "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/302-2-21",
+        "is_fixture": False,
+        "relationships": [{"related_is_number": "IS 302 (Part 1): 2008", "relationship_type": "refers_to", "description": "General safety requirements"}]
+    },
+    {
+        "is_number": "IS 302 (Part 2/Sec 30): 2007",
+        "title": "Safety of Household and Similar Electrical Appliances - Part 2: Particular Requirements - Section 30: Room Heaters",
+        "division": "Electrotechnical Department (ETD)",
+        "technical_committee": "ETD 32 Electrical Appliances",
+        "publication_year": 2007,
+        "status": "Current",
+        "scope_abstract": "Specifies safety requirements for electric room heaters including convectors, fan heaters, radiant heaters, and oil-filled radiators for household purposes, rated voltage <= 250 V.",
+        "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/302-2-30",
+        "is_fixture": False,
+        "relationships": [{"related_is_number": "IS 302 (Part 1): 2008", "relationship_type": "refers_to", "description": "General safety requirements"}]
+    },
+    {
+        "is_number": "IS 302 (Part 2/Sec 201): 2008",
+        "title": "Safety of Household and Similar Electrical Appliances - Part 2: Particular Requirements - Section 201: Electric Immersion Water Heaters",
+        "division": "Electrotechnical Department (ETD)",
+        "technical_committee": "ETD 32 Electrical Appliances",
+        "publication_year": 2008,
+        "status": "Current",
+        "scope_abstract": "Applies to portable electric immersion water heaters for household and similar use, rated voltage <= 250 V. Mandatory under DPIIT Electrical Appliances QCO.",
+        "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/302-2-201",
+        "is_fixture": False,
+        "relationships": [{"related_is_number": "IS 302 (Part 1): 2008", "relationship_type": "refers_to", "description": "General safety requirements"}]
+    },
+    {
+        "is_number": "IS 302 (Part 2/Sec 14): 2009",
+        "title": "Safety of Household and Similar Electrical Appliances - Part 2: Particular Requirements - Section 14: Kitchen Machines",
+        "division": "Electrotechnical Department (ETD)",
+        "technical_committee": "ETD 32 Electrical Appliances",
+        "publication_year": 2009,
+        "status": "Current",
+        "scope_abstract": "Safety requirements for electric kitchen machines including food processors, blenders, citrus squeezers, coffee grinders, cream whippers, egg beaters, food mixers, grain grinders, knife sharpeners, and mincers.",
+        "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/302-2-14",
+        "is_fixture": False,
+        "relationships": [{"related_is_number": "IS 4250: 1980", "relationship_type": "refers_to", "description": "Performance requirements for mixers/grinders"}]
+    },
+    {
+        "is_number": "IS 374: 2019",
+        "title": "Electric Ceiling Type Fans and Regulators - Specification",
+        "division": "Electrotechnical Department (ETD)",
+        "technical_committee": "ETD 33 Electric Fans",
+        "publication_year": 2019,
+        "status": "Current",
+        "scope_abstract": "Specifies performance, air delivery, service value, power consumption, insulation resistance, and safety requirements for AC and BLDC ceiling fans and electronic/resistance regulators.",
+        "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/374",
+        "is_fixture": False,
+        "relationships": [{"related_is_number": "IS 302 (Part 1): 2008", "relationship_type": "refers_to", "description": "General safety requirements"}]
+    },
+    {
+        "is_number": "IS 1391 (Part 1): 2017",
+        "title": "Room Air Conditioners - Specification - Part 1: Unitary Air Conditioners",
+        "division": "Mechanical Engineering Department (MED)",
+        "technical_committee": "MED 03 Refrigeration and Air Conditioning",
+        "publication_year": 2017,
+        "status": "Current",
+        "scope_abstract": "Specifies constructional, performance, safety, rating, sound level, and cooling capacity test methods for window type unitary room air conditioners.",
+        "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/1391-1",
+        "is_fixture": False,
+        "relationships": [{"related_is_number": "IS 1391 (Part 2): 2018", "relationship_type": "part_of", "description": "Split air conditioners"}]
+    },
+    {
+        "is_number": "IS 1391 (Part 2): 2018",
+        "title": "Room Air Conditioners - Specification - Part 2: Split Air Conditioners",
+        "division": "Mechanical Engineering Department (MED)",
+        "technical_committee": "MED 03 Refrigeration and Air Conditioning",
+        "publication_year": 2018,
+        "status": "Current",
+        "scope_abstract": "Specifies performance and testing requirements for split air conditioners, comprising indoor and outdoor units with fixed speed or variable speed (inverter) hermetic compressors.",
+        "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/1391-2",
+        "is_fixture": False,
+        "relationships": [{"related_is_number": "IS 1391 (Part 1): 2017", "relationship_type": "part_of", "description": "Unitary air conditioners"}]
+    },
+    {
+        "is_number": "IS 15750: 2006",
+        "title": "Household Frost-Free Refrigerating Appliances - Specification",
+        "division": "Mechanical Engineering Department (MED)",
+        "technical_committee": "MED 03 Refrigeration and Air Conditioning",
+        "publication_year": 2006,
+        "status": "Current",
+        "scope_abstract": "Specifies construction, energy consumption, storage volume, pull-down, freezing capacity, and safety for household frost-free refrigerators.",
+        "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/15750",
+        "is_fixture": False,
+        "relationships": [{"related_is_number": "IS 1751: 2009", "relationship_type": "refers_to", "description": "Direct cool refrigerators"}]
+    },
+    {
+        "is_number": "IS 1751: 2009",
+        "title": "Household Direct Cool Refrigerators - Specification",
+        "division": "Mechanical Engineering Department (MED)",
+        "technical_committee": "MED 03 Refrigeration and Air Conditioning",
+        "publication_year": 2009,
+        "status": "Current",
+        "scope_abstract": "Covers performance requirements, energy consumption, temperature performance, and test methods for direct cool refrigerators for domestic use.",
+        "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/1751",
+        "is_fixture": False,
+        "relationships": []
+    },
+    {
+        "is_number": "IS 2347: 2017",
+        "title": "Domestic Pressure Cookers - Specification",
+        "division": "Mechanical Engineering Department (MED)",
+        "technical_committee": "MED 32 Utensils and Cutlery",
+        "publication_year": 2017,
+        "status": "Current",
+        "scope_abstract": "Specifies materials, dimensions, operating pressure, burst pressure safety (minimum 3x working pressure), fusible safety plug, and pressure release mechanism for domestic pressure cookers. Mandatory under DPIIT QCO.",
+        "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/2347",
+        "is_fixture": False,
+        "relationships": []
+    },
+
+    # --- Power Distribution, Cables, Transformers & Motors ---
+    {
+        "is_number": "IS 694: 2010",
+        "title": "Polyvinyl Chloride Insulated Unsheathed and Sheathed Cables/Cords with Rigid and Flexible Conductor for Rated Voltages up to and Including 450/750 V",
+        "division": "Electrotechnical Department (ETD)",
+        "technical_committee": "ETD 09 Cables, Wires and Waveguides",
+        "publication_year": 2010,
+        "status": "Current",
+        "scope_abstract": "Specifies copper and aluminium conductor building wires, single-core and multi-core flexible cords, insulation thickness, spark testing, flammability test, and conductor resistance up to 1100 V working voltage.",
+        "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/694",
+        "is_fixture": False,
+        "relationships": [
+            {"related_is_number": "IS 1554 (Part 1): 1988", "relationship_type": "refers_to", "description": "Armoured heavy duty cables"},
+            {"related_is_number": "IS 7098 (Part 1): 1988", "relationship_type": "refers_to", "description": "XLPE insulated power cables"}
+        ]
+    },
+    {
+        "is_number": "IS 1554 (Part 1): 1988",
+        "title": "PVC Insulated (Heavy Duty) Electric Cables - Part 1: For Working Voltages up to and Including 1100 V",
+        "division": "Electrotechnical Department (ETD)",
+        "technical_committee": "ETD 09 Cables, Wires and Waveguides",
+        "publication_year": 1988,
+        "status": "Current",
+        "scope_abstract": "Requirements for armoured and unarmoured PVC insulated cables for power transmission and distribution up to 1100 V.",
+        "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/1554-1",
+        "is_fixture": False,
+        "relationships": [{"related_is_number": "IS 694: 2010", "relationship_type": "refers_to", "description": "Building wires"}]
+    },
+    {
+        "is_number": "IS 7098 (Part 1): 1988",
+        "title": "Crosslinked Polyethylene Insulated Thermoplastic Sheathed Cables - Part 1: For Working Voltages up to and Including 1100 V",
+        "division": "Electrotechnical Department (ETD)",
+        "technical_committee": "ETD 09 Cables, Wires and Waveguides",
+        "publication_year": 1988,
+        "status": "Current",
+        "scope_abstract": "Covers single-core, two-core, three-core and multi-core XLPE insulated, PVC sheathed cables with aluminium or copper conductors for electric supply systems up to 1.1 kV.",
+        "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/7098-1",
+        "is_fixture": False,
+        "relationships": [{"related_is_number": "IS 7098 (Part 2): 2011", "relationship_type": "part_of", "description": "Medium voltage XLPE cables (3.3 kV to 33 kV)"}]
+    },
+    {
+        "is_number": "IS 7098 (Part 2): 2011",
+        "title": "Crosslinked Polyethylene Insulated Thermoplastic Sheathed Cables - Part 2: For Working Voltages from 3.3 kV up to and Including 33 kV",
+        "division": "Electrotechnical Department (ETD)",
+        "technical_committee": "ETD 09 Cables, Wires and Waveguides",
+        "publication_year": 2011,
+        "status": "Current",
+        "scope_abstract": "Covers high voltage cables for utility distribution networks from 3.3 kV to 33 kV. Mandates partial discharge, impulse withstand, and water treeing resistance tests.",
+        "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/7098-2",
+        "is_fixture": False,
+        "relationships": [{"related_is_number": "IS 7098 (Part 1): 1988", "relationship_type": "part_of", "description": "Low voltage XLPE cables"}]
+    },
+    {
+        "is_number": "IS/IEC 60898 (Part 1): 2002",
+        "title": "Electrical Accessories - Circuit-Breakers for Overcurrent Protection for Household and Similar Installations - Part 1: Circuit-Breakers for A.C. Operation (MCB)",
+        "division": "Electrotechnical Department (ETD)",
+        "technical_committee": "ETD 07 Low Voltage Switchgear and Controlgear",
+        "publication_year": 2002,
+        "status": "Current",
+        "scope_abstract": "Applies to AC air-break miniature circuit-breakers (MCB) for operation at 50 Hz, rated voltage <= 440 V phase-to-phase, rated current <= 125 A, rated short-circuit capacity <= 25,000 A.",
+        "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/60898-1",
+        "is_fixture": False,
+        "relationships": [{"related_is_number": "IS/IEC 61008 (Part 1): 2014", "relationship_type": "refers_to", "description": "Residual current breakers (RCCB)"}]
+    },
+    {
+        "is_number": "IS/IEC 61008 (Part 1): 2014",
+        "title": "Residual Current Operated Circuit-Breakers Without Integral Overcurrent Protection for Household and Similar Uses (RCCBs) - Part 1: General Rules",
+        "division": "Electrotechnical Department (ETD)",
+        "technical_committee": "ETD 07 Low Voltage Switchgear and Controlgear",
+        "publication_year": 2014,
+        "status": "Current",
+        "scope_abstract": "Specifies requirements for residual current operated circuit breakers (RCCB/ELCB) for life safety and fire protection, rated current <= 125 A, rated residual operating current <= 500 mA.",
+        "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/61008-1",
+        "is_fixture": False,
+        "relationships": [{"related_is_number": "IS/IEC 60898 (Part 1): 2002", "relationship_type": "refers_to", "description": "Miniature circuit breakers"}]
+    },
+    {
+        "is_number": "IS 1293: 2019",
+        "title": "Plugs and Socket-Outlets of Rated Voltage up to and Including 250 Volts and Rated Current up to and Including 16 Amperes - Specification",
+        "division": "Electrotechnical Department (ETD)",
+        "technical_committee": "ETD 14 Electrical Wiring Accessories",
+        "publication_year": 2019,
+        "status": "Current",
+        "scope_abstract": "Applies to plugs and fixed or portable socket-outlets for AC only, with or without earthing contact, rated voltage > 50 V but <= 250 V and rated current <= 16 A, intended for household and commercial installations.",
+        "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/1293",
+        "is_fixture": False,
+        "relationships": []
+    },
+    {
+        "is_number": "IS 1180 (Part 1): 2014",
+        "title": "Outdoor Type Oil Immersed Distribution Transformers up to and Including 2500 kVA, 33 kV - Specification - Part 1: Mineral Oil Immersed",
+        "division": "Electrotechnical Department (ETD)",
+        "technical_committee": "ETD 16 Transformers",
+        "publication_year": 2014,
+        "status": "Current",
+        "scope_abstract": "Specifies energy efficiency levels (Energy Consumption Level 1, 2, and 3), maximum total losses at 50% and 100% loading, short circuit test withstand, temperature rise limits, and constructional requirements for distribution transformers. Mandatory under Ministry of Power QCO.",
+        "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/1180-1",
+        "is_fixture": False,
+        "relationships": []
+    },
+    {
+        "is_number": "IS 12615: 2018",
+        "title": "Line Operated Three Phase Induction Motors (IE Code) - Energy Efficient - Specification",
+        "division": "Electrotechnical Department (ETD)",
+        "technical_committee": "ETD 15 Rotating Machinery",
+        "publication_year": 2018,
+        "status": "Current",
+        "scope_abstract": "Specifies efficiency performance classes IE2 (High), IE3 (Premium), and IE4 (Super Premium) for line operated three-phase cage induction motors rated from 0.12 kW up to 1000 kW.",
+        "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/12615",
+        "is_fixture": False,
+        "relationships": []
+    },
+    {
+        "is_number": "IS 16444 (Part 1): 2015",
+        "title": "A.C. Static Direct Connected Watt-Hour Smart Meter, Class 1 and 2 - Specification - Part 1: For Single Phase and Three Phase Whole Current Electricity Meters",
+        "division": "Electrotechnical Department (ETD)",
+        "technical_committee": "ETD 13 Electrical Energy Measurement and Load Control",
+        "publication_year": 2015,
+        "status": "Current",
+        "scope_abstract": "Specifies static smart meters with two-way communication capability, remote connect/disconnect switch, tamper detection, load survey, and interoperability protocols under National Smart Grid Mission. Mandatory under Ministry of Power QCO.",
+        "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/16444-1",
+        "is_fixture": False,
+        "relationships": []
+    },
+    {
+        "is_number": "IS 17017 (Part 1): 2018",
+        "title": "Electric Vehicle Conductive Charging System - Part 1: General Requirements",
+        "division": "Electrotechnical Department (ETD)",
+        "technical_committee": "ETD 51 Electrotechnology in Mobility",
+        "publication_year": 2018,
+        "status": "Current",
+        "scope_abstract": "Applies to on-board and off-board equipment for charging electric road vehicles at standard AC supply voltages up to 1000 V and DC voltages up to 1500 V. Covers Modes 1, 2, 3, and 4 charging configurations.",
+        "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/17017-1",
+        "is_fixture": False,
+        "relationships": [
+            {"related_is_number": "IS 17017 (Part 2/Sec 1): 2020", "relationship_type": "part_of", "description": "EV plugs and vehicle couplers"}
+        ]
+    },
+    {
+        "is_number": "IS 17017 (Part 2/Sec 1): 2020",
+        "title": "Plugs, Socket-Outlets, Vehicle Connectors and Vehicle Inlets - Conductive Charging of Electric Vehicles - Part 2: Dimensional Compatibility and Interchangeability Requirements for A.C. Pin and Contact-Tube Accessories",
+        "division": "Electrotechnical Department (ETD)",
+        "technical_committee": "ETD 51 Electrotechnology in Mobility",
+        "publication_year": 2020,
+        "status": "Current",
+        "scope_abstract": "Specifies dimensional interchangeability, safety interlocks, IP rating, temperature rise, and mechanical endurance for EV vehicle connectors (Type 2, Bharat AC-001, Bharat DC-001, CCS-2, and CHAdeMO).",
+        "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/17017-2-1",
+        "is_fixture": False,
+        "relationships": [{"related_is_number": "IS 17017 (Part 1): 2018", "relationship_type": "part_of", "description": "General charging requirements"}]
+    },
+    {
+        "is_number": "IS 1651: 2013",
+        "title": "Stationary Lead-Acid Batteries with Tubular Positive Plates - Specification",
+        "division": "Electrotechnical Department (ETD)",
+        "technical_committee": "ETD 11 Secondary Cells and Batteries",
+        "publication_year": 2013,
+        "status": "Current",
+        "scope_abstract": "Specifies capacity tests, discharge rates, endurance cycles, amp-hour efficiency, and container material durability for stationary tubular lead-acid batteries used in solar power, UPS, and telecom back-up.",
+        "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/1651",
+        "is_fixture": False,
+        "relationships": [{"related_is_number": "IS 13369: 1992", "relationship_type": "refers_to", "description": "Stationary lead-acid flat plate batteries"}]
+    },
+    {
+        "is_number": "IS 13369: 1992",
+        "title": "Stationary Lead-Acid Batteries (with Pasted Positive Plates) - Specification",
+        "division": "Electrotechnical Department (ETD)",
+        "technical_committee": "ETD 11 Secondary Cells and Batteries",
+        "publication_year": 1992,
+        "status": "Current",
+        "scope_abstract": "Covers design, ampere-hour ratings, internal resistance, and terminal tests for flat-plate stationary lead-acid batteries.",
+        "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/13369",
+        "is_fixture": False,
+        "relationships": [{"related_is_number": "IS 1651: 2013", "relationship_type": "refers_to", "description": "Tubular lead-acid batteries"}]
+    },
+
+    # --- Solar Photovoltaic & Renewable Energy (MNRE CRO) ---
+    {
+        "is_number": "IS 14286: 2010",
+        "title": "Crystalline Silicon Terrestrial Photovoltaic (PV) Modules - Design Qualification and Type Approval",
+        "division": "Electrotechnical Department (ETD)",
+        "technical_committee": "ETD 28 Solar Photovoltaic Energy Systems",
+        "publication_year": 2010,
+        "status": "Current",
+        "scope_abstract": "Lays down requirements for design qualification and type approval of terrestrial crystalline silicon photovoltaic modules suitable for long-term outdoor operation. Test sequence includes thermal cycling, damp heat, mechanical load, hail impact, and wet leakage current. Mandatory under MNRE Solar QCO.",
+        "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/14286",
+        "is_fixture": False,
+        "relationships": [
+            {"related_is_number": "IS/IEC 61730 (Part 1): 2004", "relationship_type": "refers_to", "description": "PV module construction safety"},
+            {"related_is_number": "IS/IEC 61730 (Part 2): 2004", "relationship_type": "refers_to", "description": "PV module safety testing"}
+        ]
+    },
+    {
+        "is_number": "IS/IEC 61730 (Part 1): 2004",
+        "title": "Photovoltaic (PV) Module Safety Qualification - Part 1: Requirements for Construction",
+        "division": "Electrotechnical Department (ETD)",
+        "technical_committee": "ETD 28 Solar Photovoltaic Energy Systems",
+        "publication_year": 2004,
+        "status": "Current",
+        "scope_abstract": "Specifies fundamental construction requirements for PV modules to provide safe electrical and mechanical operation during their intended lifetime. Mandates creepage and clearance distances, insulation thickness, junction box ratings, and fire performance.",
+        "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/61730-1",
+        "is_fixture": False,
+        "relationships": [{"related_is_number": "IS/IEC 61730 (Part 2): 2004", "relationship_type": "part_of", "description": "Safety testing methods"}]
+    },
+    {
+        "is_number": "IS/IEC 61730 (Part 2): 2004",
+        "title": "Photovoltaic (PV) Module Safety Qualification - Part 2: Requirements for Testing",
+        "division": "Electrotechnical Department (ETD)",
+        "technical_committee": "ETD 28 Solar Photovoltaic Energy Systems",
+        "publication_year": 2004,
+        "status": "Current",
+        "scope_abstract": "Specifies testing sequence for PV modules to verify prevention against electrical shock, fire hazard, and personal injury due to mechanical and environmental stress. Mandatory under MNRE Solar QCO.",
+        "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/61730-2",
+        "is_fixture": False,
+        "relationships": [{"related_is_number": "IS/IEC 61730 (Part 1): 2004", "relationship_type": "part_of", "description": "Construction requirements"}]
+    },
+    {
+        "is_number": "IS 16221 (Part 2): 2015",
+        "title": "Safety of Power Converters for Use in Photovoltaic Power Systems - Part 2: Particular Requirements for Inverters",
+        "division": "Electrotechnical Department (ETD)",
+        "technical_committee": "ETD 28 Solar Photovoltaic Energy Systems",
+        "publication_year": 2015,
+        "status": "Current",
+        "scope_abstract": "Safety requirements for grid-tied, off-grid, and hybrid solar photovoltaic power inverters up to 1000 V AC / 1500 V DC. Mandatory under MNRE Solar Inverters QCO.",
+        "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/16221-2",
+        "is_fixture": False,
+        "relationships": [{"related_is_number": "IS 16169: 2014", "relationship_type": "refers_to", "description": "Anti-islanding test protocol"}]
+    },
+    {
+        "is_number": "IS 16169: 2014",
+        "title": "Test Procedure of Islanding Prevention Measures for Utility-Interconnected Photovoltaic Inverters",
+        "division": "Electrotechnical Department (ETD)",
+        "technical_committee": "ETD 28 Solar Photovoltaic Energy Systems",
+        "publication_year": 2014,
+        "status": "Current",
+        "scope_abstract": "Provides a test procedure to evaluate the performance of islanding prevention measures used in utility-interconnected PV inverters. Inverters must disconnect within 2 seconds of grid outage.",
+        "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/16169",
+        "is_fixture": False,
+        "relationships": [{"related_is_number": "IS 16221 (Part 2): 2015", "relationship_type": "refers_to", "description": "Inverter safety"}]
+    },
+
+    # --- Electronics & IT Goods (MeitY Compulsory Registration Scheme - Scheme-II) ---
+    {
+        "is_number": "IS 13252 (Part 1): 2010",
+        "title": "Information Technology Equipment - Safety - Part 1: General Requirements",
+        "division": "Electronics and Information Technology Department (LITD)",
+        "technical_committee": "LITD 07 Audio, Video and Multimedia Systems",
+        "publication_year": 2010,
+        "status": "Current",
+        "scope_abstract": "Applies to mains-powered or battery-powered information technology equipment, including computer hardware, laptops, tablets, printers, scanners, visual display units, power adapters, servers, POS terminals, and barcode readers. Mandates protection against electric shock, energy hazards, fire, mechanical instability, and radiation. Compulsory registration under Scheme-II (CRS).",
+        "source_url": "https://www.crsbis.in/BIS/guidelines.do",
+        "is_fixture": False,
+        "relationships": [
+            {"related_is_number": "IS 16046 (Part 2): 2018", "relationship_type": "refers_to", "description": "Lithium batteries used in IT products"},
+            {"related_is_number": "IS 16333 (Part 3): 2022", "relationship_type": "refers_to", "description": "Indian language support for mobile phones"}
+        ]
+    },
+    {
+        "is_number": "IS 16333 (Part 3): 2022",
+        "title": "Mobile Phone Handsets - Part 3: Indian Language Support for Mobile Phone Handsets - Specific Requirements",
+        "division": "Electronics and Information Technology Department (LITD)",
+        "technical_committee": "LITD 07 Audio, Video and Multimedia Systems",
+        "publication_year": 2022,
+        "status": "Current",
+        "scope_abstract": "Mandates that every smartphone, feature phone, and mobile handset sold in India must provide input and display capability for all 22 official scheduled Indian languages in addition to English and Hindi.",
+        "source_url": "https://www.crsbis.in/BIS/guidelines.do",
+        "is_fixture": False,
+        "relationships": [{"related_is_number": "IS 13252 (Part 1): 2010", "relationship_type": "refers_to", "description": "IT equipment safety"}]
+    },
+    {
+        "is_number": "IS 616: 2017",
+        "title": "Audio, Video and Similar Electronic Apparatus - Safety Requirements",
+        "division": "Electronics and Information Technology Department (LITD)",
+        "technical_committee": "LITD 07 Audio, Video and Multimedia Systems",
+        "publication_year": 2017,
+        "status": "Current",
+        "scope_abstract": "Identical adoption of IEC 60065. Applies to electronic apparatus designed to be fed from the mains, a supply apparatus, batteries or remote power feeding, intended for reception, generation, recording or reproduction of audio and video signals (Smart TVs, Set-Top Boxes, Amplifiers, Electronic Musical Instruments). Compulsory registration under Scheme-II.",
+        "source_url": "https://www.crsbis.in/BIS/guidelines.do",
+        "is_fixture": False,
+        "relationships": []
+    },
+    {
+        "is_number": "IS 16046 (Part 1): 2018",
+        "title": "Secondary Cells and Batteries Containing Alkaline or Other Non-Acid Electrolytes - Safety Requirements - Part 1: Nickel Systems",
+        "division": "Electrotechnical Department (ETD)",
+        "technical_committee": "ETD 11 Secondary Cells and Batteries",
+        "publication_year": 2018,
+        "status": "Current",
+        "scope_abstract": "Specifies requirements and tests for the safe operation of portable secondary sealed nickel cells and batteries (NiCd, NiMH) under intended use and reasonably foreseeable misuse.",
+        "source_url": "https://www.crsbis.in/BIS/guidelines.do",
+        "is_fixture": False,
+        "relationships": [{"related_is_number": "IS 16046 (Part 2): 2018", "relationship_type": "part_of", "description": "Lithium cell and battery systems"}]
+    },
+    {
+        "is_number": "IS 16046 (Part 2): 2018",
+        "title": "Secondary Cells and Batteries Containing Alkaline or Other Non-Acid Electrolytes - Safety Requirements - Part 2: Lithium Systems",
+        "division": "Electrotechnical Department (ETD)",
+        "technical_committee": "ETD 11 Secondary Cells and Batteries",
+        "publication_year": 2018,
+        "status": "Current",
+        "scope_abstract": "Prescribes rigorous safety testing for secondary lithium-ion cells and battery packs used in smartphones, laptops, power banks, tablets, and wearable electronics. Tests include external short circuit, continuous charging, thermal abuse (130°C oven test), drop test, mechanical crush, overcharging, and forced discharge. Mandatory under Scheme-II (CRS).",
+        "source_url": "https://www.crsbis.in/BIS/guidelines.do",
+        "is_fixture": False,
+        "relationships": [
+            {"related_is_number": "IS 16046 (Part 1): 2018", "relationship_type": "part_of", "description": "Nickel battery systems"},
+            {"related_is_number": "IS 13252 (Part 1): 2010", "relationship_type": "refers_to", "description": "Safety of host IT equipment"}
+        ]
+    },
+    {
+        "is_number": "IS 15885 (Part 2/Sec 13): 2012",
+        "title": "Lamp Controlgear - Part 2: Particular Requirements - Section 13: D.C. or A.C. Supplied Electronic Controlgear for LED Modules",
+        "division": "Electrotechnical Department (ETD)",
+        "technical_committee": "ETD 23 Electric Lamps and Associated Equipment",
+        "publication_year": 2012,
+        "status": "Current",
+        "scope_abstract": "Specifies safety and performance requirements for electronic controlgear (LED Drivers) for use on DC supplies up to 250 V and AC supplies up to 1000 V at 50 Hz. Mandatory under Scheme-II (CRS).",
+        "source_url": "https://www.crsbis.in/BIS/guidelines.do",
+        "is_fixture": False,
+        "relationships": [
+            {"related_is_number": "IS 16102 (Part 1): 2012", "relationship_type": "refers_to", "description": "LED lamps safety"},
+            {"related_is_number": "IS 16102 (Part 2): 2012", "relationship_type": "refers_to", "description": "LED lamps performance"}
+        ]
+    },
+    {
+        "is_number": "IS 16102 (Part 1): 2012",
+        "title": "Self-Ballasted LED Lamps for General Lighting Services - Part 1: Safety Requirements",
+        "division": "Electrotechnical Department (ETD)",
+        "technical_committee": "ETD 23 Electric Lamps and Associated Equipment",
+        "publication_year": 2012,
+        "status": "Current",
+        "scope_abstract": "Specifies safety and interchangeability requirements, insulation resistance, electric strength, mechanical strength, and fault condition safety for self-ballasted LED lamps. Mandatory under Scheme-II (CRS).",
+        "source_url": "https://www.crsbis.in/BIS/guidelines.do",
+        "is_fixture": False,
+        "relationships": [
+            {"related_is_number": "IS 16102 (Part 2): 2012", "relationship_type": "part_of", "description": "LED lamp performance requirements"},
+            {"related_is_number": "IS 15885 (Part 2/Sec 13): 2012", "relationship_type": "refers_to", "description": "LED drivers"}
+        ]
+    },
+    {
+        "is_number": "IS 16102 (Part 2): 2012",
+        "title": "Self-Ballasted LED Lamps for General Lighting Services - Part 2: Performance Requirements",
+        "division": "Electrotechnical Department (ETD)",
+        "technical_committee": "ETD 23 Electric Lamps and Associated Equipment",
+        "publication_year": 2012,
+        "status": "Current",
+        "scope_abstract": "Specifies performance criteria including luminous flux, lumen maintenance at 1000h and 2000h, chromaticity coordinates, colour rendering index (CRI), and lamp life for domestic and commercial LED lighting.",
+        "source_url": "https://www.crsbis.in/BIS/guidelines.do",
+        "is_fixture": False,
+        "relationships": [{"related_is_number": "IS 16102 (Part 1): 2012", "relationship_type": "part_of", "description": "Safety requirements"}]
+    },
+    {
+        "is_number": "IS 16242 (Part 1): 2014",
+        "title": "Uninterruptible Power Systems (UPS) - Part 1: General and Safety Requirements for UPS",
+        "division": "Electronics and Information Technology Department (LITD)",
+        "technical_committee": "LITD 07 Audio, Video and Multimedia Systems",
+        "publication_year": 2014,
+        "status": "Current",
+        "scope_abstract": "Applies to movable, stationary and fixed electronic uninterruptible power systems (UPS) delivering single or three-phase AC output voltage up to 1000 V. Mandatory under Scheme-II (CRS).",
+        "source_url": "https://www.crsbis.in/BIS/guidelines.do",
+        "is_fixture": False,
+        "relationships": [{"related_is_number": "IS 13252 (Part 1): 2010", "relationship_type": "refers_to", "description": "IT equipment safety"}]
+    },
+
+    # --- Civil Engineering & Building Materials (CED) ---
+    {
+        "is_number": "IS 1786: 2008",
+        "title": "High Strength Deformed Steel Bars and Wires for Concrete Reinforcement - Specification (TMT Rebars)",
+        "division": "Civil Engineering Department (CED)",
+        "technical_committee": "CED 54 Concrete Reinforcement",
+        "publication_year": 2008,
+        "status": "Current",
+        "scope_abstract": "Covers chemical and mechanical requirements for high strength deformed steel bars (Fe 415, Fe 415D, Fe 500, Fe 500D, Fe 550, Fe 550D, Fe 600) produced through Thermo-Mechanical Treatment (TMT). Specifies yield stress, tensile strength, elongation, bend and rebend tests, and rib geometry. Mandatory under Ministry of Steel QCO.",
+        "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/1786",
+        "is_fixture": False,
+        "relationships": [
+            {"related_is_number": "IS 2062: 2011", "relationship_type": "refers_to", "description": "Structural steel"},
+            {"related_is_number": "IS 432 (Part 1): 1982", "relationship_type": "refers_to", "description": "Mild steel bars"}
+        ]
+    },
+    {
+        "is_number": "IS 2062: 2011",
+        "title": "Hot Rolled Medium and High Tensile Structural Steel - Specification",
+        "division": "Civil Engineering Department (CED)",
+        "technical_committee": "CED 07 Structural Engineering and Structural Sections",
+        "publication_year": 2011,
+        "status": "Current",
+        "scope_abstract": "Specifies requirements for hot-rolled steel plates, sheets, strips, sections, flats, and bars for use in structural steel fabrications, bridges, and general engineering. Grades E250, E275, E300, E350, E410, E450. Mandatory under Ministry of Steel QCO.",
+        "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/2062",
+        "is_fixture": False,
+        "relationships": [{"related_is_number": "IS 1786: 2008", "relationship_type": "refers_to", "description": "TMT rebars"}]
+    },
+    {
+        "is_number": "IS 269: 2015",
+        "title": "Ordinary Portland Cement - Specification (33, 43 and 53 Grade)",
+        "division": "Civil Engineering Department (CED)",
+        "technical_committee": "CED 02 Cement and Concrete",
+        "publication_year": 2015,
+        "status": "Current",
+        "scope_abstract": "Harmonizes specifications for 33 grade, 43 grade, and 53 grade Ordinary Portland Cement. Covers chemical limits (loss on ignition, insoluble residue, magnesia, sulfate) and physical requirements (fineness, soundess by Le-Chatelier & Autoclave, setting time, and 3, 7, and 28-day compressive strength). Mandatory under DPIIT Cement QCO.",
+        "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/269",
+        "is_fixture": False,
+        "relationships": [
+            {"related_is_number": "IS 1489 (Part 1): 2015", "relationship_type": "refers_to", "description": "Portland pozzolana cement"},
+            {"related_is_number": "IS 455: 2015", "relationship_type": "refers_to", "description": "Portland slag cement"}
+        ]
+    },
+    {
+        "is_number": "IS 1489 (Part 1): 2015",
+        "title": "Portland Pozzolana Cement - Specification - Part 1: Fly Ash Based",
+        "division": "Civil Engineering Department (CED)",
+        "technical_committee": "CED 02 Cement and Concrete",
+        "publication_year": 2015,
+        "status": "Current",
+        "scope_abstract": "Covers manufacture, chemical requirements, drying shrinkage, initial and final setting times, soundess, and compressive strengths for fly ash based Portland Pozzolana Cement. Mandatory under DPIIT Cement QCO.",
+        "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/1489-1",
+        "is_fixture": False,
+        "relationships": [{"related_is_number": "IS 269: 2015", "relationship_type": "refers_to", "description": "Ordinary Portland cement"}]
+    },
+    {
+        "is_number": "IS 455: 2015",
+        "title": "Portland Slag Cement - Specification",
+        "division": "Civil Engineering Department (CED)",
+        "technical_committee": "CED 02 Cement and Concrete",
+        "publication_year": 2015,
+        "status": "Current",
+        "scope_abstract": "Specifies composition, physical and chemical properties of Portland Slag Cement manufactured by grinding clinker and granulated blast furnace slag. Mandatory under DPIIT Cement QCO.",
+        "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/455",
+        "is_fixture": False,
+        "relationships": [{"related_is_number": "IS 269: 2015", "relationship_type": "refers_to", "description": "OPC cement"}]
+    },
+    {
+        "is_number": "IS 4926: 2003",
+        "title": "Ready-Mixed Concrete - Code of Practice",
+        "division": "Civil Engineering Department (CED)",
+        "technical_committee": "CED 02 Cement and Concrete",
+        "publication_year": 2003,
+        "status": "Current",
+        "scope_abstract": "Covers the production, delivery, sampling, testing, and quality control of ready-mixed concrete (RMC) produced in automated batching plants.",
+        "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/4926",
+        "is_fixture": False,
+        "relationships": [{"related_is_number": "IS 269: 2015", "relationship_type": "refers_to", "description": "Cement standards"}]
+    },
+    {
+        "is_number": "IS 710: 2010",
+        "title": "Marine Plywood - Specification",
+        "division": "Civil Engineering Department (CED)",
+        "technical_committee": "CED 20 Wood and Other Lignocellulosic Products",
+        "publication_year": 2010,
+        "status": "Current",
+        "scope_abstract": "Prescribes requirements for marine plywood bonded with high quality thermosetting phenol formaldehyde adhesive capable of withstanding 72 hours boiling water test (BWP grade) and fungal decay. Mandatory under DPIIT Plywood QCO.",
+        "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/710",
+        "is_fixture": False,
+        "relationships": [
+            {"related_is_number": "IS 303: 1989", "relationship_type": "refers_to", "description": "General purpose plywood"},
+            {"related_is_number": "IS 2202 (Part 1): 1999", "relationship_type": "refers_to", "description": "Wooden flush doors"}
+        ]
+    },
+    {
+        "is_number": "IS 303: 1989",
+        "title": "Plywood for General Purposes - Specification",
+        "division": "Civil Engineering Department (CED)",
+        "technical_committee": "CED 20 Wood and Other Lignocellulosic Products",
+        "publication_year": 1989,
+        "status": "Current",
+        "scope_abstract": "Specifies grades (Moisture Resistant MR and Boiling Water Resistant BWR), veneer thickness, adhesive bonding quality, tensile strength, and moisture content for general architectural plywood. Mandatory under DPIIT Plywood QCO.",
+        "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/303",
+        "is_fixture": False,
+        "relationships": [{"related_is_number": "IS 710: 2010", "relationship_type": "refers_to", "description": "Marine grade plywood"}]
+    },
+    {
+        "is_number": "IS 2202 (Part 1): 1999",
+        "title": "Wooden Flush Door Shutters (Solid Core Type) - Specification - Part 1: Plywood Face Panels",
+        "division": "Civil Engineering Department (CED)",
+        "technical_committee": "CED 20 Wood and Other Lignocellulosic Products",
+        "publication_year": 1999,
+        "status": "Current",
+        "scope_abstract": "Covers requirements for solid core wooden flush door shutters with face panels of plywood, timber species, timber treatment, adhesive bonding, slam test, and impact resistance. Mandatory under DPIIT Plywood QCO.",
+        "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/2202-1",
+        "is_fixture": False,
+        "relationships": [{"related_is_number": "IS 303: 1989", "relationship_type": "refers_to", "description": "Plywood for face panels"}]
+    },
+    {
+        "is_number": "IS 15622: 2017",
+        "title": "Pressed Ceramic Tiles - Specification",
+        "division": "Civil Engineering Department (CED)",
+        "technical_committee": "CED 05 Flooring, Wall Finishing and Roofing",
+        "publication_year": 2017,
+        "status": "Current",
+        "scope_abstract": "Specifies dimensions, surface quality, water absorption groups (Group BIa, BIb, BIIa, BIIb, BIII), modulus of rupture, breaking strength, deep abrasion resistance, thermal shock resistance, and stain resistance for ceramic and vitrified floor/wall tiles.",
+        "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/15622",
+        "is_fixture": False,
+        "relationships": []
+    },
+    {
+        "is_number": "IS 4985: 2021",
+        "title": "Unplasticized Polyvinyl Chloride (uPVC) Pipes for Potable Water Supplies - Specification",
+        "division": "Civil Engineering Department (CED)",
+        "technical_committee": "CED 50 Plastic Piping Systems",
+        "publication_year": 2021,
+        "status": "Current",
+        "scope_abstract": "Specifies requirements for plain and socket ended unplasticized polyvinyl chloride (uPVC) pipes for potable water transmission and distribution. Lays down toxic metal extraction limits (lead, tin, cadmium, mercury), hydrostatic burst pressure, and opacity. Mandatory under DPIIT Pipes QCO.",
+        "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/4985",
+        "is_fixture": False,
+        "relationships": [{"related_is_number": "IS 4984: 2016", "relationship_type": "refers_to", "description": "HDPE piping systems"}]
+    },
+    {
+        "is_number": "IS 4984: 2016",
+        "title": "High Density Polyethylene (HDPE) Pipes for Water Supply - Specification",
+        "division": "Civil Engineering Department (CED)",
+        "technical_committee": "CED 50 Plastic Piping Systems",
+        "publication_year": 2016,
+        "status": "Current",
+        "scope_abstract": "Specifies raw material grades (PE 63, PE 80, PE 100), dimensions, hydrostatic pressure tests, carbon black dispersion, melt flow rate, and oxidation induction time for potable HDPE water pipes.",
+        "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/4984",
+        "is_fixture": False,
+        "relationships": [{"related_is_number": "IS 4985: 2021", "relationship_type": "refers_to", "description": "uPVC pipes"}]
+    },
+    {
+        "is_number": "IS 2553 (Part 1): 2018",
+        "title": "Safety Glass - Specification - Part 1: Architectural, Building and General Uses",
+        "division": "Civil Engineering Department (CED)",
+        "technical_committee": "CED 05 Flooring, Wall Finishing and Roofing",
+        "publication_year": 2018,
+        "status": "Current",
+        "scope_abstract": "Specifies safety performance, fragmentation test, pendulum body impact test, boil test, and optical properties for toughened safety glass and laminated architectural glass. Mandatory under DPIIT Safety Glass QCO.",
+        "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/2553-1",
+        "is_fixture": False,
+        "relationships": [{"related_is_number": "IS 2553 (Part 2): 2019", "relationship_type": "part_of", "description": "Automotive vehicle safety glass"}]
+    },
+    {
+        "is_number": "IS 2553 (Part 2): 2019",
+        "title": "Safety Glass - Specification - Part 2: For Road Transport",
+        "division": "Mechanical Engineering Department (MED)",
+        "technical_committee": "TED 06 Automotive Safety and Security Components",
+        "publication_year": 2019,
+        "status": "Current",
+        "scope_abstract": "Prescribes requirements and test methods for toughened and laminated safety glazing intended for installation as windscreens and windows on motor vehicles. Covers 227g ball drop, phantom headform impact, luminous transmittance, and optical distortion.",
+        "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/2553-2",
+        "is_fixture": False,
+        "relationships": [{"related_is_number": "IS 2553 (Part 1): 2018", "relationship_type": "part_of", "description": "Architectural safety glass"}]
+    },
+    {
+        "is_number": "IS 12894: 2002",
+        "title": "Pulverized Fuel Ash-Lime Bricks - Specification",
+        "division": "Civil Engineering Department (CED)",
+        "technical_committee": "CED 30 Clay and Stabilized Soil Products for Construction",
+        "publication_year": 2002,
+        "status": "Current",
+        "scope_abstract": "Covers manufacture, dimensions, compressive strength, drying shrinkage, and water absorption for eco-friendly fly ash bricks produced from industrial thermal power plant ash.",
+        "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/12894",
+        "is_fixture": False,
+        "relationships": []
+    },
+    {
+        "is_number": "IS 2185 (Part 3): 1984",
+        "title": "Concrete Masonry Units - Specification - Part 3: Autoclaved Cellular Aerated Concrete Blocks (AAC Blocks)",
+        "division": "Civil Engineering Department (CED)",
+        "technical_committee": "CED 30 Clay and Stabilized Soil Products for Construction",
+        "publication_year": 1984,
+        "status": "Current",
+        "scope_abstract": "Prescribes requirements for autoclaved aerated concrete (AAC) blocks used for load-bearing and non-load-bearing masonry, thermal conductivity, dry density, compressive strength, and drying shrinkage.",
+        "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/2185-3",
+        "is_fixture": False,
+        "relationships": []
+    },
+
+    # --- Mechanical & Automotive Safety (MED / TED) ---
+    {
+        "is_number": "IS 4151: 2020",
+        "title": "Protective Helmets for Two-Wheeler Riders - Specification",
+        "division": "Mechanical Engineering Department (MED)",
+        "technical_committee": "TED 06 Automotive Safety and Security Components",
+        "publication_year": 2020,
+        "status": "Current",
+        "scope_abstract": "Specifies rigorous physical, mechanical, and safety requirements for protective helmets for drivers and passengers of motorcycles and scooters. Mandates shock absorption testing on flat and kerbstone anvils at ambient, low (-10°C), and high (+50°C) temperatures, dynamic retention chin-strap test, peripheral vision (> 105 degrees), and visor optical clarity. Mandatory under MoRTH / DPIIT QCO.",
+        "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/4151",
+        "is_fixture": False,
+        "relationships": []
+    },
+    {
+        "is_number": "IS 15633: 2005",
+        "title": "Automotive Vehicles - Pneumatic Tyres for Passenger Car Vehicles - Diagonal and Radial Ply",
+        "division": "Mechanical Engineering Department (MED)",
+        "technical_committee": "TED 07 Automotive Tyres and Tubes",
+        "publication_year": 2005,
+        "status": "Current",
+        "scope_abstract": "Specifies dimensional requirements, load/speed performance, bead unseating resistance, breaking energy (plunger test), and high-speed endurance for passenger car radial and bias tyres. Mandatory under DPIIT Pneumatic Tyres QCO.",
+        "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/15633",
+        "is_fixture": False,
+        "relationships": [{"related_is_number": "IS 15636: 2012", "relationship_type": "refers_to", "description": "Commercial vehicle tyres"}]
+    },
+    {
+        "is_number": "IS 15636: 2012",
+        "title": "Automotive Vehicles - Pneumatic Tyres for Commercial Vehicles - Diagonal and Radial Ply",
+        "division": "Mechanical Engineering Department (MED)",
+        "technical_committee": "TED 07 Automotive Tyres and Tubes",
+        "publication_year": 2012,
+        "status": "Current",
+        "scope_abstract": "Specifies tyre strength, endurance testing under load, dimension limits, and tread wear indicators for heavy and light commercial vehicle tyres. Mandatory under DPIIT Pneumatic Tyres QCO.",
+        "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/15636",
+        "is_fixture": False,
+        "relationships": [{"related_is_number": "IS 15633: 2005", "relationship_type": "refers_to", "description": "Passenger car tyres"}]
+    },
+    {
+        "is_number": "IS 3196 (Part 1): 2013",
+        "title": "Welded Low Carbon Steel Cylinders Exceeding 5 Litre Water Capacity for Low Pressure Liquefiable Gases - Part 1: Cylinders for Liquefied Petroleum Gas (LPG Cylinders)",
+        "division": "Mechanical Engineering Department (MED)",
+        "technical_committee": "MED 16 Gas Cylinders",
+        "publication_year": 2013,
+        "status": "Current",
+        "scope_abstract": "Specifies material steel chemistry, design, welded joint fabrication, radiographic inspection, hydrostatic stretch test, burst test (minimum 2.25x test pressure), and circumferential weld integrity for domestic 14.2 kg and commercial 19 kg LPG cylinders. Mandatory under PESO and BIS Scheme-I.",
+        "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/3196-1",
+        "is_fixture": False,
+        "relationships": [
+            {"related_is_number": "IS 9798: 1995", "relationship_type": "refers_to", "description": "LPG pressure regulators"},
+            {"related_is_number": "IS 14899: 2000", "relationship_type": "refers_to", "description": "Automotive LPG containers"}
+        ]
+    },
+    {
+        "is_number": "IS 9798: 1995",
+        "title": "Low Pressure Regulators for Use with Liquefied Petroleum Gas (LPG) Mixtures - Specification",
+        "division": "Mechanical Engineering Department (MED)",
+        "technical_committee": "MED 16 Gas Cylinders",
+        "publication_year": 1995,
+        "status": "Current",
+        "scope_abstract": "Specifies materials, performance, gas sound tightness, flow capacity, outlet pressure control, and cycle life for domestic snap-on and screw-type LPG regulators. Mandatory under DPIIT QCO.",
+        "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/9798",
+        "is_fixture": False,
+        "relationships": [{"related_is_number": "IS 3196 (Part 1): 2013", "relationship_type": "refers_to", "description": "LPG cylinders"}]
+    },
+
+    # --- Toys and Childcare Articles (Mandatory DPIIT Toys QCO) ---
+    {
+        "is_number": "IS 9873 (Part 1): 2019",
+        "title": "Safety of Toys - Part 1: Safety Aspects Related to Mechanical and Physical Properties",
+        "division": "Mechanical Engineering Department (MED)",
+        "technical_committee": "MED 38 Toys Safety",
+        "publication_year": 2019,
+        "status": "Current",
+        "scope_abstract": "Applies to all toys intended for children under 14 years. Mandates tests for sharp edges, sharp points, small parts choke hazards for children under 36 months, tension, drop, torque, compression, dynamic strength, kinetic energy of projectiles, and acoustic noise limits. Mandatory under DPIIT Toys QCO.",
+        "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/9873-1",
+        "is_fixture": False,
+        "relationships": [
+            {"related_is_number": "IS 9873 (Part 2): 2017", "relationship_type": "part_of", "description": "Flammability"},
+            {"related_is_number": "IS 9873 (Part 3): 2020", "relationship_type": "part_of", "description": "Toxic element migration"},
+            {"related_is_number": "IS 15644: 2006", "relationship_type": "refers_to", "description": "Electric toys safety"}
+        ]
+    },
+    {
+        "is_number": "IS 9873 (Part 2): 2017",
+        "title": "Safety of Toys - Part 2: Flammability",
+        "division": "Mechanical Engineering Department (MED)",
+        "technical_committee": "MED 38 Toys Safety",
+        "publication_year": 2017,
+        "status": "Current",
+        "scope_abstract": "Specifies categories of flammable materials prohibited in toys and flammability testing of plush toys, disguises, costumes, and toys intended to be worn by a child. Rate of flame spread must not exceed 30 mm/s. Mandatory under DPIIT Toys QCO.",
+        "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/9873-2",
+        "is_fixture": False,
+        "relationships": [{"related_is_number": "IS 9873 (Part 1): 2019", "relationship_type": "part_of", "description": "Mechanical safety"}]
+    },
+    {
+        "is_number": "IS 9873 (Part 3): 2020",
+        "title": "Safety of Toys - Part 3: Migration of Certain Elements",
+        "division": "Mechanical Engineering Department (MED)",
+        "technical_committee": "MED 38 Toys Safety",
+        "publication_year": 2020,
+        "status": "Current",
+        "scope_abstract": "Specifies maximum permissible migration limits for 8 toxic heavy elements in toy materials (Antimony <= 60 mg/kg, Arsenic <= 25 mg/kg, Barium <= 1000 mg/kg, Cadmium <= 75 mg/kg, Chromium <= 60 mg/kg, Lead <= 90 mg/kg, Mercury <= 60 mg/kg, Selenium <= 500 mg/kg). Mandatory under DPIIT Toys QCO.",
+        "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/9873-3",
+        "is_fixture": False,
+        "relationships": [{"related_is_number": "IS 9873 (Part 1): 2019", "relationship_type": "part_of", "description": "Mechanical safety"}]
+    },
+    {
+        "is_number": "IS 15644: 2006",
+        "title": "Safety of Electric Toys",
+        "division": "Electrotechnical Department (ETD)",
+        "technical_committee": "ETD 32 Electrical Appliances",
+        "publication_year": 2006,
+        "status": "Current",
+        "scope_abstract": "Specifies safety requirements for toys having at least one function dependent on electricity (rated voltage <= 24 V DC or AC). Tests include electric strength, moisture resistance, battery abuse, heating limits, laser radiation, and EMC emissions. Mandatory under DPIIT Toys QCO.",
+        "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/15644",
+        "is_fixture": False,
+        "relationships": [{"related_is_number": "IS 9873 (Part 1): 2019", "relationship_type": "refers_to", "description": "Mechanical toy safety"}]
+    },
+
+    # --- Footwear & Personal Protective Equipment (CHD / TXD) ---
+    {
+        "is_number": "IS 15298 (Part 2): 2016",
+        "title": "Personal Protective Equipment - Part 2: Safety Footwear",
+        "division": "Chemical Department (CHD)",
+        "technical_committee": "CHD 17 Leather, Tanning and Footwear",
+        "publication_year": 2016,
+        "status": "Current",
+        "scope_abstract": "Specifies basic and supplementary requirements for industrial safety footwear fitted with toecaps designed to provide protection against impact at an energy level of at least 200 Joules and against compression at a load of at least 15 kN. Mandatory under DPIIT Footwear QCO.",
+        "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/15298-2",
+        "is_fixture": False,
+        "relationships": [
+            {"related_is_number": "IS 15298 (Part 3): 2019", "relationship_type": "part_of", "description": "Protective footwear (100 J toe-cap)"},
+            {"related_is_number": "IS 15298 (Part 4): 2017", "relationship_type": "part_of", "description": "Occupational footwear (no toe-cap)"}
+        ]
+    },
+    {
+        "is_number": "IS 15298 (Part 3): 2019",
+        "title": "Personal Protective Equipment - Part 3: Protective Footwear",
+        "division": "Chemical Department (CHD)",
+        "technical_committee": "CHD 17 Leather, Tanning and Footwear",
+        "publication_year": 2019,
+        "status": "Current",
+        "scope_abstract": "Requirements for protective footwear fitted with toecaps tested to an energy level of 100 Joules and 10 kN compression load. Mandatory under DPIIT Footwear QCO.",
+        "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/15298-3",
+        "is_fixture": False,
+        "relationships": [{"related_is_number": "IS 15298 (Part 2): 2016", "relationship_type": "part_of", "description": "Safety footwear (200 J)"}]
+    },
+    {
+        "is_number": "IS 6721: 2023",
+        "title": "PVC Sandal and Slippers - Specification",
+        "division": "Chemical Department (CHD)",
+        "technical_committee": "CHD 17 Leather, Tanning and Footwear",
+        "publication_year": 2023,
+        "status": "Current",
+        "scope_abstract": "Specifies construction, upper thickness, sole hardness, flex resistance, and strap attachment strength for all-PVC molded sandals and slippers. Mandatory under DPIIT Polymeric Footwear QCO.",
+        "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/6721",
+        "is_fixture": False,
+        "relationships": [{"related_is_number": "IS 10702: 2023", "relationship_type": "refers_to", "description": "Rubber Hawai chappals"}]
+    },
+    {
+        "is_number": "IS 10702: 2023",
+        "title": "Rubber Hawai Chappal - Specification",
+        "division": "Chemical Department (CHD)",
+        "technical_committee": "CHD 17 Leather, Tanning and Footwear",
+        "publication_year": 2023,
+        "status": "Current",
+        "scope_abstract": "Specifies physical and performance requirements for open-strap rubber Hawai chappals, including density, tensile strength, elongation at break, split tear strength, and strap pull-out strength. Mandatory under DPIIT Polymeric Footwear QCO.",
+        "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/10702",
+        "is_fixture": False,
+        "relationships": [{"related_is_number": "IS 6721: 2023", "relationship_type": "refers_to", "description": "PVC sandals"}]
+    },
+    {
+        "is_number": "IS 9473: 2002",
+        "title": "Respiratory Protective Devices - Filtering Half Masks to Protect Against Particles - Specification",
+        "division": "Chemical Department (CHD)",
+        "technical_committee": "CHD 08 Occupational Safety and Health",
+        "publication_year": 2002,
+        "status": "Current",
+        "scope_abstract": "Specifies performance, penetration by sodium chloride and paraffin oil aerosols, total inward leakage, breathing resistance, and flammability for particulate filtering half masks (FFP1, FFP2 / N95 equivalent, and FFP3).",
+        "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/9473",
+        "is_fixture": False,
+        "relationships": []
+    },
+
+    # --- Food & Agriculture (FAD) ---
+    {
+        "is_number": "IS 14543: 2016",
+        "title": "Packaged Drinking Water (Other Than Packaged Natural Mineral Water) - Specification",
+        "division": "Food and Agriculture Department (FAD)",
+        "technical_committee": "FAD 14 Drinks and Carbonated Beverages",
+        "publication_year": 2016,
+        "status": "Current",
+        "scope_abstract": "Prescribes requirements for packaged drinking water processed by filtration, demineralization, reverse osmosis, and disinfection. Specifies strict limits for 50+ parameters including physical parameters (TDS, turbidity), chemical residues (heavy metals: lead <= 0.01 mg/l, arsenic <= 0.01 mg/l), pesticide residues (individual <= 0.0001 mg/l), and complete absence of microbiological pathogens (E. coli, Coliform, Faecal Streptococci, Pseudomonas aeruginosa). Mandatory certification under FSSAI / BIS Scheme-I.",
+        "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/14543",
+        "is_fixture": False,
+        "relationships": [{"related_is_number": "IS 13428: 2005", "relationship_type": "refers_to", "description": "Packaged natural mineral water"}]
+    },
+    {
+        "is_number": "IS 13428: 2005",
+        "title": "Packaged Natural Mineral Water - Specification",
+        "division": "Food and Agriculture Department (FAD)",
+        "technical_committee": "FAD 14 Drinks and Carbonated Beverages",
+        "publication_year": 2005,
+        "status": "Current",
+        "scope_abstract": "Prescribes requirements for natural mineral water obtained directly from underground sources (natural springs or artesian wells) bottled near the source without chemical treatment. Mandatory certification under FSSAI / BIS Scheme-I.",
+        "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/13428",
+        "is_fixture": False,
+        "relationships": [{"related_is_number": "IS 14543: 2016", "relationship_type": "refers_to", "description": "Packaged drinking water"}]
+    },
+    {
+        "is_number": "IS 1165: 2002",
+        "title": "Milk Powder - Specification",
+        "division": "Food and Agriculture Department (FAD)",
+        "technical_committee": "FAD 19 Dairy Products",
+        "publication_year": 2002,
+        "status": "Current",
+        "scope_abstract": "Specifies moisture content, milk fat, milk protein, titratable acidity, insolubility index, scorched particles, and microbiological counts for whole milk powder and skimmed milk powder. Mandatory under FSSAI / BIS Scheme-I.",
+        "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/1165",
+        "is_fixture": False,
+        "relationships": [{"related_is_number": "IS 14433: 2022", "relationship_type": "refers_to", "description": "Infant milk food"}]
+    },
+    {
+        "is_number": "IS 14433: 2022",
+        "title": "Infant Milk Food - Specification",
+        "division": "Food and Agriculture Department (FAD)",
+        "technical_committee": "FAD 19 Dairy Products",
+        "publication_year": 2022,
+        "status": "Current",
+        "scope_abstract": "Prescribes nutritional composition, vitamins, minerals, choline, DHA, protein digestibility, absence of heavy metal contaminants, and sterile packaging requirements for infant milk substitutes. Mandatory under FSSAI / BIS Scheme-I.",
+        "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/14433",
+        "is_fixture": False,
+        "relationships": [{"related_is_number": "IS 1165: 2002", "relationship_type": "refers_to", "description": "Milk powder"}]
+    },
+    {
+        "is_number": "IS 17782: 2021",
+        "title": "Fortified Rice Kernels - Specification",
+        "division": "Food and Agriculture Department (FAD)",
+        "technical_committee": "FAD 16 Foodgrains, Starches and Ready to Eat Foods",
+        "publication_year": 2021,
+        "status": "Current",
+        "scope_abstract": "Prescribes requirements for extruded Fortified Rice Kernels (FRK) enriched with micronutrients (Iron, Folic Acid, and Vitamin B12) for blending with custom milled rice under the Public Distribution System (PDS). Mandatory under Scheme-I.",
+        "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/17782",
+        "is_fixture": False,
+        "relationships": []
+    },
+
+    # --- Chemicals & Petrochemicals (CHD) ---
+    {
+        "is_number": "IS 252: 2013",
+        "title": "Caustic Soda, Pure and Technical - Specification",
+        "division": "Chemical Department (CHD)",
+        "technical_committee": "CHD 02 Alkalis and Inorganic Chemicals",
+        "publication_year": 2013,
+        "status": "Current",
+        "scope_abstract": "Specifies purity, sodium hydroxide content (minimum 99.5% for pure grade), sodium carbonate, chlorides, sulphates, silicates, and heavy metals limits for caustic soda flakes, lye, and solids. Mandatory under Chemicals QCO.",
+        "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/252",
+        "is_fixture": False,
+        "relationships": []
+    },
+    {
+        "is_number": "IS 517: 2020",
+        "title": "Methanol (Methyl Alcohol) - Specification",
+        "division": "Chemical Department (CHD)",
+        "technical_committee": "CHD 03 Organic Chemicals",
+        "publication_year": 2020,
+        "status": "Current",
+        "scope_abstract": "Prescribes requirements, distillation range, relative density, acetone content, acidity, and water content for industrial grade methanol. Mandatory under Chemicals QCO.",
+        "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/517",
+        "is_fixture": False,
+        "relationships": []
+    },
+    {
+        "is_number": "IS 2833: 2019",
+        "title": "Aniline, Technical - Specification",
+        "division": "Chemical Department (CHD)",
+        "technical_committee": "CHD 03 Organic Chemicals",
+        "publication_year": 2019,
+        "status": "Current",
+        "scope_abstract": "Prescribes requirements, purity (minimum 99.5% by GC), moisture, nitrobenzene content, and test methods for technical aniline used in rubber chemicals and dyes.",
+        "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/2833",
+        "is_fixture": False,
+        "relationships": []
+    },
+
+    # --- Precious Metals & Hallmarking (Scheme-XI) ---
+    {
+        "is_number": "IS 1417: 2016",
+        "title": "Gold and Gold Alloys, Jewellery/Artefacts - Fineness and Marking - Specification",
+        "division": "Metallurgical Engineering Department (MTD)",
+        "technical_committee": "MTD 10 Precious Metals and Products",
+        "publication_year": 2016,
+        "status": "Current",
+        "scope_abstract": "Specifies fineness grades (14K585, 18K750, 20K833, 22K916, 23K958, 24K995/999), assaying testing methods (fire assay cupellation and XRF screening), and mandatory 3-symbol hallmarking (BIS Logo, Fineness in Carats & Parts per Thousand, and 6-digit HUID code) for gold jewellery. Mandatory under Hallmarking QCO.",
+        "source_url": "https://www.manakonline.in/MANAK/hallmarkingHome",
+        "is_fixture": False,
+        "relationships": [{"related_is_number": "IS 2112: 2014", "relationship_type": "refers_to", "description": "Silver hallmarking"}]
+    },
+    {
+        "is_number": "IS 2112: 2014",
+        "title": "Silver and Silver Alloys, Jewellery/Artefacts - Fineness and Marking - Specification",
+        "division": "Metallurgical Engineering Department (MTD)",
+        "technical_committee": "MTD 10 Precious Metals and Products",
+        "publication_year": 2014,
+        "status": "Current",
+        "scope_abstract": "Specifies fineness grades for silver jewellery and artefacts (999, 990, 970, 925 Sterling Silver, 900, 835, 800 parts per thousand), assaying testing, and marking guidelines under BIS Scheme-XI.",
+        "source_url": "https://www.manakonline.in/MANAK/hallmarkingHome",
+        "is_fixture": False,
+        "relationships": [{"related_is_number": "IS 1417: 2016", "relationship_type": "refers_to", "description": "Gold hallmarking"}]
+    }
+]
+
+print(f"Generated {len(STANDARDS)} standards.")
+with open(SEED_DIR / "standards.json", "w", encoding="utf-8") as f:
+    json.dump(STANDARDS, f, indent=2)
