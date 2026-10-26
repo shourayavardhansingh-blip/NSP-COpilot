@@ -1,0 +1,183 @@
+[
+  {
+    "order_number": "S.O. 853(E) / 2020",
+    "title": "Toys (Quality Control) Order, 2020",
+    "issuing_ministry": "Ministry of Commerce and Industry (DPIIT)",
+    "product_category": "Toys and Childcare Goods",
+    "gazette_date": "2020-02-25",
+    "enforcement_date": "2021-01-01",
+    "status": "In Force",
+    "official_url": "https://dpiit.gov.in/sites/default/files/Toys_Quality_Control_Order_2020.pdf",
+    "is_fixture": false,
+    "notes": "Mandates that all non-electric and electric toys manufactured, imported, or sold in India must conform to relevant Indian Standards (IS 9873 Parts 1, 2, 3 and IS 15644) and bear the Standard ISI Mark under Scheme-I of Schedule-II of the BIS (Conformity Assessment) Regulations 2018. Goods manufactured by registered artisans and weavers are subject to special MSME provisions.",
+    "standards": [
+      {
+        "is_number": "IS 9873 (Part 1): 2019",
+        "exemption_notes": "Mandatory for physical and mechanical properties"
+      },
+      {
+        "is_number": "IS 9873 (Part 2): 2017",
+        "exemption_notes": "Mandatory for flammability"
+      },
+      {
+        "is_number": "IS 9873 (Part 3): 2020",
+        "exemption_notes": "Mandatory for toxic heavy metal migration"
+      },
+      {
+        "is_number": "IS 15644: 2006",
+        "exemption_notes": "Mandatory for all electric toys"
+      }
+    ],
+    "amendments": [
+      {
+        "amendment_number": "Toys (Quality Control) Amendment Order, 2020",
+        "gazette_notification": "S.O. 3144(E)",
+        "notification_date": "2020-09-15",
+        "effective_date": "2021-01-01",
+        "summary": "Extended original enforcement date from 01-09-2020 to 01-01-2021 to allow manufacturers and testing laboratories to upgrade capacity.",
+        "source_url": "https://dpiit.gov.in/"
+      }
+    ]
+  },
+  {
+    "order_number": "S.O. 2920(E) / 2017",
+    "title": "Solar Photovoltaics, Systems, Devices and Components Goods (Requirements for Compulsory Registration) Order, 2017",
+    "issuing_ministry": "Ministry of New and Renewable Energy (MNRE)",
+    "product_category": "Solar Energy Equipment",
+    "gazette_date": "2017-09-05",
+    "enforcement_date": "2018-04-16",
+    "status": "In Force",
+    "official_url": "https://mnre.gov.in/solar-photovoltaics-order/",
+    "is_fixture": false,
+    "notes": "Mandates compulsory registration under Scheme-II (CRS) with BIS for crystalline silicon terrestrial PV modules, thin-film modules, and power converters/inverters. Manufacturers must obtain test reports from accredited BIS labs.",
+    "standards": [
+      {
+        "is_number": "IS 14286: 2010",
+        "exemption_notes": "Mandatory for crystalline silicon terrestrial PV modules"
+      },
+      {
+        "is_number": "IS/IEC 61730 (Part 1): 2004",
+        "exemption_notes": "Mandatory safety construction qualification"
+      }
+    ],
+    "amendments": [
+      {
+        "amendment_number": "MNRE Solar PV Order Enforcement Extension Notice",
+        "gazette_notification": "No. 283/54/2018-GRID SOLAR",
+        "notification_date": "2018-07-02",
+        "effective_date": "2018-09-04",
+        "summary": "Provided self-certification window while lab testing capacity was ramped up across government laboratories.",
+        "source_url": "https://mnre.gov.in/"
+      }
+    ]
+  },
+  {
+    "order_number": "S.O. 1109(E) / 2023",
+    "title": "Electrical Appliances for Household and Similar Purposes (Quality Control) Order, 2023",
+    "issuing_ministry": "Ministry of Commerce and Industry (DPIIT)",
+    "product_category": "Household Electrical Appliances",
+    "gazette_date": "2023-03-05",
+    "enforcement_date": "2024-03-01",
+    "status": "In Force",
+    "official_url": "https://dpiit.gov.in/sites/default/files/Electrical_Appliances_QCO_2023.pdf",
+    "is_fixture": false,
+    "notes": "Mandates compulsory conformity to IS 302 series and standard mark (ISI Mark under Scheme-I) for stationary storage water heaters, electric irons, room heaters, immersion water heaters, and electric stoves.",
+    "standards": [
+      {
+        "is_number": "IS 302 (Part 1): 2008",
+        "exemption_notes": "General safety requirements"
+      },
+      {
+        "is_number": "IS 302 (Part 2/Sec 3): 2007",
+        "exemption_notes": "Electric irons"
+      },
+      {
+        "is_number": "IS 302 (Part 2/Sec 21): 2011",
+        "exemption_notes": "Stationary storage water heaters (geysers)"
+      },
+      {
+        "is_number": "IS 302 (Part 2/Sec 30): 2007",
+        "exemption_notes": "Room heaters"
+      }
+    ],
+    "amendments": [
+      {
+        "amendment_number": "Electrical Appliances QCO (First Amendment) 2024",
+        "gazette_notification": "S.O. 724(E)",
+        "notification_date": "2024-02-15",
+        "effective_date": "2024-09-01",
+        "summary": "Staggered compliance dates for micro enterprises (12 months extension) and small enterprises (6 months extension) to facilitate BIS licensing.",
+        "source_url": "https://dpiit.gov.in/"
+      }
+    ]
+  },
+  {
+    "order_number": "S.O. 1672(E) / 2020",
+    "title": "Steel and Steel Products (Quality Control) Order, 2020",
+    "issuing_ministry": "Ministry of Steel",
+    "product_category": "Steel & Metallurgy",
+    "gazette_date": "2020-05-22",
+    "enforcement_date": "2020-11-22",
+    "status": "In Force",
+    "official_url": "https://steel.gov.in/sites/default/files/Steel_QCO_2020.pdf",
+    "is_fixture": false,
+    "notes": "Mandates Scheme-I ISI Mark certification for high-strength deformed bars (TMT bars IS 1786) and structural steel (IS 2062). Prohibits manufacture, sale, or import without licence.",
+    "standards": [
+      {
+        "is_number": "IS 1786: 2008",
+        "exemption_notes": "TMT bars for concrete reinforcement"
+      },
+      {
+        "is_number": "IS 2062: 2011",
+        "exemption_notes": "Structural steel plates and sections"
+      }
+    ],
+    "amendments": []
+  },
+  {
+    "order_number": "S.O. 4252(E) / 2020",
+    "title": "Two-Wheeler Protective Helmets (Quality Control) Order, 2020",
+    "issuing_ministry": "Ministry of Road Transport and Highways (MoRTH)",
+    "product_category": "Personal Safety Equipment",
+    "gazette_date": "2020-11-26",
+    "enforcement_date": "2021-06-01",
+    "status": "In Force",
+    "official_url": "https://morth.nic.in/helmets-order-2020",
+    "is_fixture": false,
+    "notes": "Mandates that all helmets for riders of two-wheeled motor vehicles must conform to IS 4151: 2015 and bear the Standard ISI Mark under Scheme-I. Non-certified helmets cannot be manufactured, stocked, or sold.",
+    "standards": [
+      {
+        "is_number": "IS 4151: 2015",
+        "exemption_notes": "Mandatory for all two-wheeler helmets in India"
+      }
+    ],
+    "amendments": []
+  },
+  {
+    "order_number": "MeitY/CRO/Phase-IV/2021",
+    "title": "Electronics and Information Technology Goods (Requirement of Compulsory Registration) Order, Phase-IV",
+    "issuing_ministry": "Ministry of Electronics and Information Technology (MeitY)",
+    "product_category": "Electronics & IT Goods",
+    "gazette_date": "2021-03-18",
+    "enforcement_date": "2021-11-20",
+    "status": "In Force",
+    "official_url": "https://www.meity.gov.in/esdm/standards",
+    "is_fixture": false,
+    "notes": "Mandates Compulsory Registration Scheme (CRS) under Scheme-II for secondary cells, lithium battery packs, power banks, and servers under IS 16046 and IS 13252.",
+    "standards": [
+      {
+        "is_number": "IS 16046 (Part 1): 2018",
+        "exemption_notes": "Nickel battery cells and packs"
+      },
+      {
+        "is_number": "IS 16046 (Part 2): 2018",
+        "exemption_notes": "Lithium battery cells and power banks"
+      },
+      {
+        "is_number": "IS 13252 (Part 1): 2010",
+        "exemption_notes": "IT equipment, power adapters, servers"
+      }
+    ],
+    "amendments": []
+  }
+]

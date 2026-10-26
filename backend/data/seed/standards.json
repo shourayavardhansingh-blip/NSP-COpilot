@@ -1,0 +1,298 @@
+[
+  {
+    "is_number": "IS 302 (Part 1): 2008",
+    "title": "Safety of Household and Similar Electrical Appliances - Part 1: General Requirements",
+    "division": "Electrotechnical Department (ETD)",
+    "technical_committee": "ETD 32 Electrical Appliances",
+    "publication_year": 2008,
+    "status": "Current",
+    "scope_abstract": "Deals with the safety of electrical appliances for household and similar purposes, their rated voltage being not more than 250 V for single-phase appliances and 480 V for other appliances. Appliances not intended for normal household use but which nevertheless may be a source of danger to the public, such as appliances intended to be used by laymen in shops, in light industry and on farms, are within the scope of this standard.",
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/302",
+    "is_fixture": false,
+    "relationships": [
+      {
+        "related_is_number": "IS 302 (Part 2/Sec 3): 2007",
+        "relationship_type": "part_of",
+        "description": "Particular requirements for electric irons"
+      },
+      {
+        "related_is_number": "IS 302 (Part 2/Sec 21): 2011",
+        "relationship_type": "part_of",
+        "description": "Particular requirements for storage water heaters (geysers)"
+      },
+      {
+        "related_is_number": "IS 302 (Part 2/Sec 30): 2007",
+        "relationship_type": "part_of",
+        "description": "Particular requirements for room heaters"
+      }
+    ]
+  },
+  {
+    "is_number": "IS 302 (Part 2/Sec 3): 2007",
+    "title": "Safety of Household and Similar Electrical Appliances - Part 2: Particular Requirements - Section 3: Electric Irons",
+    "division": "Electrotechnical Department (ETD)",
+    "technical_committee": "ETD 32 Electrical Appliances",
+    "publication_year": 2007,
+    "status": "Current",
+    "scope_abstract": "Specifies safety requirements for electric dry irons and steam irons, including those with a separate water reservoir or boiler having a capacity not exceeding 5 litres, for household and similar purposes, their rated voltage being not more than 250 V.",
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/302-2-3",
+    "is_fixture": false,
+    "relationships": [
+      {
+        "related_is_number": "IS 302 (Part 1): 2008",
+        "relationship_type": "refers_to",
+        "description": "General safety requirements"
+      }
+    ]
+  },
+  {
+    "is_number": "IS 302 (Part 2/Sec 21): 2011",
+    "title": "Safety of Household and Similar Electrical Appliances - Part 2: Particular Requirements - Section 21: Stationary Storage Water Heaters",
+    "division": "Electrotechnical Department (ETD)",
+    "technical_committee": "ETD 32 Electrical Appliances",
+    "publication_year": 2011,
+    "status": "Current",
+    "scope_abstract": "Deals with the safety of electric stationary storage water heaters (geysers) for household and similar purposes and intended for heating water below boiling temperature, their rated voltage being not more than 250 V for single-phase appliances and 480 V for other appliances.",
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/302-2-21",
+    "is_fixture": false,
+    "relationships": [
+      {
+        "related_is_number": "IS 302 (Part 1): 2008",
+        "relationship_type": "refers_to",
+        "description": "General safety requirements"
+      }
+    ]
+  },
+  {
+    "is_number": "IS 302 (Part 2/Sec 30): 2007",
+    "title": "Safety of Household and Similar Electrical Appliances - Part 2: Particular Requirements - Section 30: Room Heaters",
+    "division": "Electrotechnical Department (ETD)",
+    "technical_committee": "ETD 32 Electrical Appliances",
+    "publication_year": 2007,
+    "status": "Current",
+    "scope_abstract": "Deals with the safety of electric room heaters for household and similar purposes, their rated voltage being not more than 250 V for single-phase appliances and 480 V for other appliances, including convector heaters, fan heaters, and radiant heaters.",
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/302-2-30",
+    "is_fixture": false,
+    "relationships": [
+      {
+        "related_is_number": "IS 302 (Part 1): 2008",
+        "relationship_type": "refers_to",
+        "description": "General safety requirements"
+      }
+    ]
+  },
+  {
+    "is_number": "IS 694: 2010",
+    "title": "Polyvinyl Chloride Insulated Cables for Working Voltages up to and including 1100 V - Specification",
+    "division": "Electrotechnical Department (ETD)",
+    "technical_committee": "ETD 09 Power Cables",
+    "publication_year": 2010,
+    "status": "Current",
+    "scope_abstract": "Covers the requirements of single core and multicore PVC insulated cables for working voltages up to and including 1100 V for electric power and lighting in domestic, commercial and industrial installations.",
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/694",
+    "is_fixture": false,
+    "relationships": []
+  },
+  {
+    "is_number": "IS 1293: 2019",
+    "title": "Plugs and Socket-Outlets of Rated Voltage up to and including 250 Volts and Rated Current up to 16 Amperes - Specification",
+    "division": "Electrotechnical Department (ETD)",
+    "technical_committee": "ETD 14 Electrical Wiring Accessories",
+    "publication_year": 2019,
+    "status": "Current",
+    "scope_abstract": "Applies to plugs and fixed or portable socket-outlets for a.c. only, with and without earthing contact, with a rated voltage not exceeding 250 V and a rated current not exceeding 16 A, intended for household and similar purposes, either indoors or outdoors.",
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/1293",
+    "is_fixture": false,
+    "relationships": []
+  },
+  {
+    "is_number": "IS 16046 (Part 1): 2018",
+    "title": "Secondary Cells and Batteries Containing Alkaline or Other Non-Acid Electrolytes - Safety Requirements for Portable Sealed Secondary Cells - Part 1: Nickel Systems",
+    "division": "Electrotechnical Department (ETD)",
+    "technical_committee": "ETD 11 Secondary Cells and Batteries",
+    "publication_year": 2018,
+    "status": "Current",
+    "scope_abstract": "Identical adoption of IEC 62133-1: 2017. Specifies requirements and tests for the safe operation of portable sealed secondary nickel cells and batteries containing alkaline electrolyte, under intended use and reasonably foreseeable misuse.",
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/16046-1",
+    "is_fixture": false,
+    "relationships": [
+      {
+        "related_is_number": "IS 16046 (Part 2): 2018",
+        "relationship_type": "part_of",
+        "description": "Lithium battery systems"
+      }
+    ]
+  },
+  {
+    "is_number": "IS 16046 (Part 2): 2018",
+    "title": "Secondary Cells and Batteries Containing Alkaline or Other Non-Acid Electrolytes - Safety Requirements for Portable Sealed Secondary Cells - Part 2: Lithium Systems",
+    "division": "Electrotechnical Department (ETD)",
+    "technical_committee": "ETD 11 Secondary Cells and Batteries",
+    "publication_year": 2018,
+    "status": "Current",
+    "scope_abstract": "Identical adoption of IEC 62133-2: 2017. Specifies requirements and tests for the safe operation of portable sealed secondary lithium cells and batteries (including power banks, mobile phone batteries, laptop batteries) containing non-acid electrolyte, under intended use and reasonably foreseeable misuse.",
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/16046-2",
+    "is_fixture": false,
+    "relationships": [
+      {
+        "related_is_number": "IS 16046 (Part 1): 2018",
+        "relationship_type": "part_of",
+        "description": "Nickel battery systems"
+      }
+    ]
+  },
+  {
+    "is_number": "IS 13252 (Part 1): 2010",
+    "title": "Information Technology Equipment - Safety - Part 1: General Requirements",
+    "division": "Electronics and Information Technology (LITD)",
+    "technical_committee": "LITD 08 Safety of IT Equipment",
+    "publication_year": 2010,
+    "status": "Current",
+    "scope_abstract": "Identical adoption of IEC 60950-1: 2005. Applicable to mains-powered or battery-powered information technology equipment, including electrical business equipment and associated equipment, with a rated voltage not exceeding 600 V.",
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/13252-1",
+    "is_fixture": false,
+    "relationships": []
+  },
+  {
+    "is_number": "IS 14286: 2010",
+    "title": "Crystalline Silicon Terrestrial Photovoltaic (PV) Modules - Design Qualification and Type Approval",
+    "division": "Electrotechnical Department (ETD)",
+    "technical_committee": "ETD 28 Solar Photovoltaic Energy Systems",
+    "publication_year": 2010,
+    "status": "Current",
+    "scope_abstract": "Lays down requirements for the design qualification and type approval of terrestrial crystalline silicon photovoltaic modules suitable for long-term operation in general open-air climates.",
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/14286",
+    "is_fixture": false,
+    "relationships": [
+      {
+        "related_is_number": "IS/IEC 61730 (Part 1): 2004",
+        "relationship_type": "refers_to",
+        "description": "Photovoltaic module safety qualification"
+      }
+    ]
+  },
+  {
+    "is_number": "IS/IEC 61730 (Part 1): 2004",
+    "title": "Photovoltaic (PV) Module Safety Qualification - Part 1: Requirements for Construction",
+    "division": "Electrotechnical Department (ETD)",
+    "technical_committee": "ETD 28 Solar Photovoltaic Energy Systems",
+    "publication_year": 2004,
+    "status": "Current",
+    "scope_abstract": "Describes fundamental construction requirements for photovoltaic (PV) modules in order to provide safe electrical and mechanical operation during their expected lifetime.",
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/61730-1",
+    "is_fixture": false,
+    "relationships": []
+  },
+  {
+    "is_number": "IS 1786: 2008",
+    "title": "High Strength Deformed Steel Bars and Wires for Concrete Reinforcement - Specification",
+    "division": "Civil Engineering Department (CED)",
+    "technical_committee": "CED 54 Concrete Reinforcement",
+    "publication_year": 2008,
+    "status": "Current",
+    "scope_abstract": "Covers the technical requirements of high strength deformed steel bars and wires for concrete reinforcement (TMT bars) in grades Fe 415, Fe 415D, Fe 500, Fe 500D, Fe 550, Fe 550D, and Fe 600.",
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/1786",
+    "is_fixture": false,
+    "relationships": []
+  },
+  {
+    "is_number": "IS 2062: 2011",
+    "title": "Hot Rolled Medium and High Tensile Structural Steel - Specification",
+    "division": "Metallurgical Engineering Department (MTD)",
+    "technical_committee": "MTD 04 Steel Tubes and Pipes",
+    "publication_year": 2011,
+    "status": "Current",
+    "scope_abstract": "Covers the requirements of steel plates, strips, sections, flats, bars etc., for use in structural work involving bolted, riveted, or welded construction and for general engineering purposes.",
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/2062",
+    "is_fixture": false,
+    "relationships": []
+  },
+  {
+    "is_number": "IS 9873 (Part 1): 2019",
+    "title": "Safety of Toys - Part 1: Safety Aspects Related to Mechanical and Physical Properties",
+    "division": "Mechanical Engineering Department (MED)",
+    "technical_committee": "PCD 12 / MED 38 Toys and Childcare Articles",
+    "publication_year": 2019,
+    "status": "Current",
+    "scope_abstract": "Specifies acceptable criteria for the structural characteristics of toys, such as shape, size, contour, spacing, sharp points, sharp edges, small parts choke hazard, and hazards from projectile toys for children under 14 years.",
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/9873-1",
+    "is_fixture": false,
+    "relationships": [
+      {
+        "related_is_number": "IS 9873 (Part 2): 2017",
+        "relationship_type": "part_of",
+        "description": "Flammability of toys"
+      },
+      {
+        "related_is_number": "IS 9873 (Part 3): 2020",
+        "relationship_type": "part_of",
+        "description": "Migration of certain elements"
+      },
+      {
+        "related_is_number": "IS 15644: 2006",
+        "relationship_type": "refers_to",
+        "description": "Safety of electric toys"
+      }
+    ]
+  },
+  {
+    "is_number": "IS 9873 (Part 2): 2017",
+    "title": "Safety of Toys - Part 2: Flammability Requirements",
+    "division": "Mechanical Engineering Department (MED)",
+    "technical_committee": "PCD 12 / MED 38 Toys and Childcare Articles",
+    "publication_year": 2017,
+    "status": "Current",
+    "scope_abstract": "Specifies the categories of flammable materials which are prohibited in all toys and requirements concerning the flammability of certain toys when they are submitted to a small source of ignition.",
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/9873-2",
+    "is_fixture": false,
+    "relationships": []
+  },
+  {
+    "is_number": "IS 9873 (Part 3): 2020",
+    "title": "Safety of Toys - Part 3: Migration of Certain Elements",
+    "division": "Mechanical Engineering Department (MED)",
+    "technical_committee": "PCD 12 / MED 38 Toys and Childcare Articles",
+    "publication_year": 2020,
+    "status": "Current",
+    "scope_abstract": "Specifies maximum acceptable levels and methods of sampling and extraction prior to analysis for the migration of the elements antimony, arsenic, barium, cadmium, chromium, lead, mercury and selenium from toy materials.",
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/9873-3",
+    "is_fixture": false,
+    "relationships": []
+  },
+  {
+    "is_number": "IS 15644: 2006",
+    "title": "Safety of Electric Toys",
+    "division": "Electrotechnical Department (ETD)",
+    "technical_committee": "ETD 32 Electrical Appliances",
+    "publication_year": 2006,
+    "status": "Current",
+    "scope_abstract": "Specifies requirements for the safety of electric toys that have at least one function dependent on electricity. Covers toys powered by batteries or transformers.",
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/15644",
+    "is_fixture": false,
+    "relationships": []
+  },
+  {
+    "is_number": "IS 4151: 2015",
+    "title": "Protective Helmets for Two-Wheeler Riders - Specification",
+    "division": "Mechanical Engineering Department (MED)",
+    "technical_committee": "MED 18 Personal Protective Equipment",
+    "publication_year": 2015,
+    "status": "Current",
+    "scope_abstract": "Covers the requirements for protective helmets for everyday use by drivers and passengers of two-wheeled motor vehicles, specifying impact absorption test, penetration test, and chinstrap retention strength.",
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/4151",
+    "is_fixture": false,
+    "relationships": []
+  },
+  {
+    "is_number": "IS 14543: 2004",
+    "title": "Packaged Drinking Water (Other than Packaged Natural Mineral Water) - Specification",
+    "division": "Food and Agriculture Department (FAD)",
+    "technical_committee": "FAD 14 Drinks and Carbonated Beverages",
+    "publication_year": 2004,
+    "status": "Current",
+    "scope_abstract": "Prescribes requirements and methods of sampling and test for packaged drinking water other than packaged natural mineral water, including microbiological limits, chemical purity, and tamper-evident packaging.",
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails/14543",
+    "is_fixture": false,
+    "relationships": []
+  }
+]

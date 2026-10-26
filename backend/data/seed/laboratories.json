@@ -1,0 +1,372 @@
+[
+  {
+    "lab_code": "BIS-CL-001",
+    "name": "Bureau of Indian Standards Central Laboratory (CL)",
+    "address": "Plot No. 20/9, Site IV, Sahibabad Industrial Area, Ghaziabad",
+    "city": "Ghaziabad",
+    "district": "Ghaziabad",
+    "state": "Uttar Pradesh",
+    "pincode": "201010",
+    "latitude": 28.6692,
+    "longitude": 77.3538,
+    "contact_person": "Head of Central Laboratory, BIS",
+    "phone": "+91-120-2771501",
+    "email": "cl@bis.gov.in",
+    "lab_type": "BIS Central Laboratory",
+    "status": "Recognized",
+    "recognition_valid_until": "2028-12-31",
+    "source_url": "https://lims.bis.gov.in/",
+    "is_fixture": false,
+    "scopes": [
+      {
+        "is_number": "IS 302 (Part 1): 2008",
+        "product_category": "Electrical Appliances",
+        "testing_capability": "Complete electrical safety, insulation resistance, electric strength, earth resistance tests"
+      },
+      {
+        "is_number": "IS 302 (Part 2/Sec 21): 2011",
+        "product_category": "Water Heaters",
+        "testing_capability": "Hydrostatic pressure testing up to 1.0 MPa, standing heat loss, energy consumption, thermal cut-out"
+      },
+      {
+        "is_number": "IS 302 (Part 2/Sec 3): 2007",
+        "product_category": "Electric Irons",
+        "testing_capability": "Soleplate temperature measurement, thermal safety, drop test, cord endurance"
+      },
+      {
+        "is_number": "IS 694: 2010",
+        "product_category": "Cables and Wires",
+        "testing_capability": "Conductor resistance, insulation resistance, spark test, flammability test"
+      },
+      {
+        "is_number": "IS 1786: 2008",
+        "product_category": "TMT Steel Bars",
+        "testing_capability": "Yield strength, ultimate tensile strength, elongation, bend and rebend test"
+      },
+      {
+        "is_number": "IS 9873 (Part 1): 2019",
+        "product_category": "Toys",
+        "testing_capability": "Mechanical and physical testing, sharp edges, drop test, tension test"
+      },
+      {
+        "is_number": "IS 9873 (Part 3): 2020",
+        "product_category": "Toys",
+        "testing_capability": "Inductively Coupled Plasma (ICP-MS) toxic heavy metal migration analysis"
+      }
+    ]
+  },
+  {
+    "lab_code": "BIS-WRL-002",
+    "name": "Bureau of Indian Standards Western Regional Laboratory (WRL)",
+    "address": "Manakalaya, E9, MIDC, Andheri (East)",
+    "city": "Mumbai",
+    "district": "Mumbai Suburban",
+    "state": "Maharashtra",
+    "pincode": "400093",
+    "latitude": 19.1176,
+    "longitude": 72.8687,
+    "contact_person": "Director (Laboratories), WRL",
+    "phone": "+91-22-28329295",
+    "email": "wrl@bis.gov.in",
+    "lab_type": "BIS Regional Laboratory",
+    "status": "Recognized",
+    "recognition_valid_until": "2027-11-30",
+    "source_url": "https://lims.bis.gov.in/",
+    "is_fixture": false,
+    "scopes": [
+      {
+        "is_number": "IS 302 (Part 1): 2008",
+        "product_category": "Electrical Appliances",
+        "testing_capability": "Safety of household appliances, leakage current, moisture resistance"
+      },
+      {
+        "is_number": "IS 1293: 2019",
+        "product_category": "Plugs and Sockets",
+        "testing_capability": "Dimensions, endurance, temperature rise, mechanical strength"
+      },
+      {
+        "is_number": "IS 14543: 2004",
+        "product_category": "Packaged Drinking Water",
+        "testing_capability": "Complete physical, chemical, pesticide residue, and microbiological testing"
+      },
+      {
+        "is_number": "IS 4151: 2015",
+        "product_category": "Helmets",
+        "testing_capability": "Impact absorption test, penetration test, retention system dynamic test"
+      }
+    ]
+  },
+  {
+    "lab_code": "BIS-SRL-003",
+    "name": "Bureau of Indian Standards Southern Regional Laboratory (SRL)",
+    "address": "CIT Campus, IV Cross Road, Taramani",
+    "city": "Chennai",
+    "district": "Chennai",
+    "state": "Tamil Nadu",
+    "pincode": "600113",
+    "latitude": 12.9863,
+    "longitude": 80.2432,
+    "contact_person": "Scientist-F & Head, SRL",
+    "phone": "+91-44-22541442",
+    "email": "srl@bis.gov.in",
+    "lab_type": "BIS Regional Laboratory",
+    "status": "Recognized",
+    "recognition_valid_until": "2027-10-15",
+    "source_url": "https://lims.bis.gov.in/",
+    "is_fixture": false,
+    "scopes": [
+      {
+        "is_number": "IS 302 (Part 2/Sec 21): 2011",
+        "product_category": "Water Heaters",
+        "testing_capability": "Storage water heater safety and energy efficiency tests"
+      },
+      {
+        "is_number": "IS 1786: 2008",
+        "product_category": "TMT Bars",
+        "testing_capability": "Mechanical properties and chemical composition analysis"
+      },
+      {
+        "is_number": "IS 14543: 2004",
+        "product_category": "Drinking Water",
+        "testing_capability": "Chemical and microbiological parameters"
+      }
+    ]
+  },
+  {
+    "lab_code": "CPRI-BLR-004",
+    "name": "Central Power Research Institute (CPRI) High Power Testing Lab",
+    "address": "Sir C.V. Raman Road, Sadashivanagar",
+    "city": "Bengaluru",
+    "district": "Bengaluru Urban",
+    "state": "Karnataka",
+    "pincode": "560080",
+    "latitude": 13.0119,
+    "longitude": 77.5806,
+    "contact_person": "Chief Testing Officer, CPRI",
+    "phone": "+91-80-22072210",
+    "email": "testing@cpri.in",
+    "lab_type": "NABL Partner & BIS Recognized",
+    "status": "Recognized",
+    "recognition_valid_until": "2028-06-30",
+    "source_url": "https://cpri.res.in/",
+    "is_fixture": false,
+    "scopes": [
+      {
+        "is_number": "IS 694: 2010",
+        "product_category": "Cables",
+        "testing_capability": "High voltage test, flame retardance, oxygen index, temperature index"
+      },
+      {
+        "is_number": "IS 1293: 2019",
+        "product_category": "Plugs & Sockets",
+        "testing_capability": "Short circuit test, temperature rise test, breaking capacity"
+      }
+    ]
+  },
+  {
+    "lab_code": "ERDA-VAD-005",
+    "name": "Electrical Research and Development Association (ERDA)",
+    "address": "ERDA Road, GIDC, Makarpura",
+    "city": "Vadodara",
+    "district": "Vadodara",
+    "state": "Gujarat",
+    "pincode": "390010",
+    "latitude": 22.2536,
+    "longitude": 73.1974,
+    "contact_person": "General Manager (Testing)",
+    "phone": "+91-265-3043128",
+    "email": "erda@erda.org",
+    "lab_type": "BIS Recognized",
+    "status": "Recognized",
+    "recognition_valid_until": "2027-08-31",
+    "source_url": "https://www.erda.org/",
+    "is_fixture": false,
+    "scopes": [
+      {
+        "is_number": "IS 302 (Part 1): 2008",
+        "product_category": "Electrical Appliances",
+        "testing_capability": "Ingress protection (IP testing), heating, overload protection"
+      },
+      {
+        "is_number": "IS 302 (Part 2/Sec 30): 2007",
+        "product_category": "Room Heaters",
+        "testing_capability": "Radiant heat safety, overturn protection switch, element glow safety"
+      },
+      {
+        "is_number": "IS 694: 2010",
+        "product_category": "PVC Cables",
+        "testing_capability": "Type testing and acceptance testing"
+      }
+    ]
+  },
+  {
+    "lab_code": "NISE-GGN-006",
+    "name": "National Institute of Solar Energy (NISE) PV Testing Laboratory",
+    "address": "19th Milestone, Gurgaon-Faridabad Road, Gwal Pahari",
+    "city": "Gurugram",
+    "district": "Gurugram",
+    "state": "Haryana",
+    "pincode": "122003",
+    "latitude": 28.4312,
+    "longitude": 77.1511,
+    "contact_person": "Director (Solar Testing Lab)",
+    "phone": "+91-124-2853000",
+    "email": "pvlab.nise@gov.in",
+    "lab_type": "MNRE / BIS Apex Lab",
+    "status": "Recognized",
+    "recognition_valid_until": "2029-03-31",
+    "source_url": "https://nise.res.in/",
+    "is_fixture": false,
+    "scopes": [
+      {
+        "is_number": "IS 14286: 2010",
+        "product_category": "Solar PV Modules",
+        "testing_capability": "Class AAA solar simulator STC performance, thermal cycling 200 cycles, damp heat 1000 hrs, humidity freeze"
+      },
+      {
+        "is_number": "IS/IEC 61730 (Part 1): 2004",
+        "product_category": "Solar PV Modules",
+        "testing_capability": "Safety construction verification, creepage distance, bypass diode thermal test"
+      }
+    ]
+  },
+  {
+    "lab_code": "TUV-BLR-007",
+    "name": "TUV Rheinland India Electronics & Battery Testing Laboratory",
+    "address": "27/B, 2nd Cross Road, Electronic City Phase 1",
+    "city": "Bengaluru",
+    "district": "Bengaluru Urban",
+    "state": "Karnataka",
+    "pincode": "560100",
+    "latitude": 12.8452,
+    "longitude": 77.6602,
+    "contact_person": "Head of CRS Testing Division",
+    "phone": "+91-80-46498000",
+    "email": "info@ind.tuv.com",
+    "lab_type": "BIS Recognized",
+    "status": "Recognized",
+    "recognition_valid_until": "2028-09-30",
+    "source_url": "https://www.tuv.com/india/en/",
+    "is_fixture": false,
+    "scopes": [
+      {
+        "is_number": "IS 16046 (Part 2): 2018",
+        "product_category": "Lithium Batteries",
+        "testing_capability": "Continuous charging, external short circuit, free fall, thermal abuse, crush, over-charging"
+      },
+      {
+        "is_number": "IS 13252 (Part 1): 2010",
+        "product_category": "IT Equipment",
+        "testing_capability": "Electric strength, fault conditions, temperature limits, energy hazards"
+      }
+    ]
+  },
+  {
+    "lab_code": "UL-BLR-008",
+    "name": "UL India Safety Testing Laboratory",
+    "address": "Kalyani Platina, 3rd Floor, EPIP Zone, Whitefield",
+    "city": "Bengaluru",
+    "district": "Bengaluru Urban",
+    "state": "Karnataka",
+    "pincode": "560066",
+    "latitude": 12.9771,
+    "longitude": 77.7289,
+    "contact_person": "Manager (BIS Operations)",
+    "phone": "+91-80-41384400",
+    "email": "customercare.in@ul.com",
+    "lab_type": "BIS Recognized",
+    "status": "Recognized",
+    "recognition_valid_until": "2028-05-31",
+    "source_url": "https://india.ul.com/",
+    "is_fixture": false,
+    "scopes": [
+      {
+        "is_number": "IS 16046 (Part 2): 2018",
+        "product_category": "Lithium Batteries",
+        "testing_capability": "Safety requirements for portable lithium cells and battery packs"
+      },
+      {
+        "is_number": "IS 13252 (Part 1): 2010",
+        "product_category": "IT & Telecom",
+        "testing_capability": "Safety of power adapters, laptops, and data processing equipment"
+      }
+    ]
+  },
+  {
+    "lab_code": "INTERTEK-DEL-009",
+    "name": "Intertek India Testing Services Lab",
+    "address": "Plot No. 68, Okhla Industrial Area Phase III",
+    "city": "New Delhi",
+    "district": "South East Delhi",
+    "state": "Delhi",
+    "pincode": "110020",
+    "latitude": 28.5355,
+    "longitude": 77.2711,
+    "contact_person": "Senior Manager (Consumer Products)",
+    "phone": "+91-11-41599400",
+    "email": "delhi.testing@intertek.com",
+    "lab_type": "BIS Recognized",
+    "status": "Recognized",
+    "recognition_valid_until": "2027-12-31",
+    "source_url": "https://www.intertek.com/india/",
+    "is_fixture": false,
+    "scopes": [
+      {
+        "is_number": "IS 9873 (Part 1): 2019",
+        "product_category": "Toys",
+        "testing_capability": "Full mechanical hazards, small parts choke cylinder, seam strength"
+      },
+      {
+        "is_number": "IS 9873 (Part 2): 2017",
+        "product_category": "Toys",
+        "testing_capability": "Rate of spread of flame on plush toys and fabric costumes"
+      },
+      {
+        "is_number": "IS 9873 (Part 3): 2020",
+        "product_category": "Toys",
+        "testing_capability": "Heavy metals migration testing (Lead, Cadmium, Mercury, Chromium)"
+      },
+      {
+        "is_number": "IS 15644: 2006",
+        "product_category": "Electric Toys",
+        "testing_capability": "Electrical safety, laser radiation emission, heating and wire insulation"
+      }
+    ]
+  },
+  {
+    "lab_code": "NTH-KOL-010",
+    "name": "National Test House (Eastern Region), Ministry of Consumer Affairs",
+    "address": "11/1 Judges Court Road, Alipore",
+    "city": "Kolkata",
+    "district": "Kolkata",
+    "state": "West Bengal",
+    "pincode": "700027",
+    "latitude": 22.5273,
+    "longitude": 88.3308,
+    "contact_person": "Director, National Test House",
+    "phone": "+91-33-24791207",
+    "email": "nth-kol@nic.in",
+    "lab_type": "Government Apex Testing Lab",
+    "status": "Recognized",
+    "recognition_valid_until": "2029-12-31",
+    "source_url": "https://nth.gov.in/",
+    "is_fixture": false,
+    "scopes": [
+      {
+        "is_number": "IS 1786: 2008",
+        "product_category": "TMT Steel",
+        "testing_capability": "Chemical spectro-analysis (Carbon, Sulphur, Phosphorus) and mechanical testing"
+      },
+      {
+        "is_number": "IS 2062: 2011",
+        "product_category": "Structural Steel",
+        "testing_capability": "Tensile, impact, bend, Charpy V-notch toughness testing"
+      },
+      {
+        "is_number": "IS 14543: 2004",
+        "product_category": "Packaged Water",
+        "testing_capability": "Comprehensive physicochemical and microbiological testing"
+      }
+    ]
+  }
+]

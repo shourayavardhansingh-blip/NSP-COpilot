@@ -1,0 +1,54 @@
+[
+  {
+    "code": "SCHEME_I",
+    "name": "Scheme-I (ISI Mark - Product Certification Scheme)",
+    "description": "Standard product certification scheme under BIS (Conformity Assessment) Regulations 2018, Schedule-II. Involves assessment of the manufacturing infrastructure, production process, quality control, in-house testing facilities, and testing of product samples in independent BIS/recognized labs.",
+    "governing_act": "Bureau of Indian Standards Act 2016, Section 13 & Schedule-II Scheme-I",
+    "mark_name": "ISI Mark (with CM/L Licence Number)",
+    "typical_timeline_weeks": 12,
+    "factory_audit_required": true,
+    "sample_testing_required": true,
+    "surveillance_frequency": "Periodic factory surveillance and market sample drawing (6-12 months)",
+    "documentation_requirements": "Manufacturing plant layout, machinery list, in-house test equipment calibration certificates, test personnel qualification, Scheme of Inspection & Testing (SIT) acceptance, Process flow diagram, Raw material test certificates.",
+    "guidance_url": "https://www.bis.gov.in/product-certification/product-certification-schemes/"
+  },
+  {
+    "code": "SCHEME_II",
+    "name": "Scheme-II (CRS - Compulsory Registration Scheme)",
+    "description": "Registration scheme primarily applicable to electronics, IT, and solar photovoltaic products under notifications from MeitY, MNRE, and Ministry of Power. Manufacturers self-declare conformity based on test reports from BIS-recognized laboratories without mandatory preliminary factory audit.",
+    "governing_act": "Bureau of Indian Standards (Conformity Assessment) Regulations 2018, Schedule-II Scheme-II",
+    "mark_name": "Standard Mark for CRS (with Registration No. R-XXXXXXXX)",
+    "typical_timeline_weeks": 4,
+    "factory_audit_required": false,
+    "sample_testing_required": true,
+    "surveillance_frequency": "Market surveillance with random sample picking from commercial distribution channels",
+    "documentation_requirements": "Valid Test Report from BIS-recognized laboratory (under 90 days old), Undertaking of Conformity, Brand Authorisation Letter, Local Representative Affidavit (for foreign manufacturers), Trademark registration certificate.",
+    "guidance_url": "https://www.crsbis.in/BIS/"
+  },
+  {
+    "code": "SCHEME_IV",
+    "name": "Scheme-IV (Certificate of Conformity)",
+    "description": "Certificate of Conformity issued for batches or specific lots of goods where continuous factory inspection is not viable or for specialized imported consignments.",
+    "governing_act": "BIS (Conformity Assessment) Regulations 2018, Schedule-II Scheme-IV",
+    "mark_name": "Certificate of Conformity (CoC)",
+    "typical_timeline_weeks": 6,
+    "factory_audit_required": false,
+    "sample_testing_required": true,
+    "surveillance_frequency": "Batch-by-batch inspection and sampling",
+    "documentation_requirements": "Batch manufacturing records, dispatch consignment notes, third-party lab test reports, port entry documents.",
+    "guidance_url": "https://www.bis.gov.in/product-certification/"
+  },
+  {
+    "code": "SCHEME_X",
+    "name": "Scheme-X (Simplified Conformity for Industrial Capital Goods)",
+    "description": "Conformity assessment scheme tailored for large custom machinery, industrial plants, transformers, and heavy capital goods requiring technical construction files and prototype evaluation.",
+    "governing_act": "BIS (Conformity Assessment) Regulations 2018, Schedule-II Scheme-X",
+    "mark_name": "Scheme-X Conformity Mark",
+    "typical_timeline_weeks": 16,
+    "factory_audit_required": true,
+    "sample_testing_required": true,
+    "surveillance_frequency": "Annual verification and design modification review",
+    "documentation_requirements": "Complete engineering design calculations, finite element analysis, material test certificates, weld inspection records, witnessed factory acceptance tests.",
+    "guidance_url": "https://www.bis.gov.in/"
+  }
+]
