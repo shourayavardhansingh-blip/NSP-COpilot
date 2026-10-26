@@ -31,6 +31,17 @@ class LaboratoriesIngestor(BaseIngestor):
     def ingest_records(self, records: List[Dict[str, Any]]) -> Dict[str, Any]:
         run = self.start_run()
         try:
+            # Pre-load existing labs and standards for high-performance in-memory lookups
+            existing_labs = {l.lab_code: l for l in self.db.query(TestingLaboratory).all()}
+            standards_by_norm = {s.normalized_is: s.id for s in self.db.query(Standard.normalized_is, Standard.id).all()}
+            existing_scopes = {
+                (s.laboratory_id, s.standard_id)
+                for s in self.db.query(LaboratoryScope.laboratory_id, LaboratoryScope.standard_id).all()
+            }
+
+            batch_counter = 0
+            pending_scopes = []
+
             for item in records:
                 self.processed += 1
                 lab_code = item.get("lab_code", "").strip()
@@ -46,7 +57,7 @@ class LaboratoriesIngestor(BaseIngestor):
                 valid_until = self._parse_date(item.get("recognition_valid_until"))
                 is_fixture = bool(item.get("is_fixture", False))
 
-                existing = self.db.query(TestingLaboratory).filter(TestingLaboratory.lab_code == lab_code).first()
+                existing = existing_labs.get(lab_code)
                 if existing:
                     existing.name = name
                     existing.address = item.get("address", existing.address)
@@ -88,35 +99,41 @@ class LaboratoriesIngestor(BaseIngestor):
                         last_verified_at=datetime.utcnow()
                     )
                     self.db.add(new_lab)
-                    self.db.flush()
+                    existing_labs[lab_code] = new_lab
                     target_lab = new_lab
 
-                # Ingest testing scopes
+                # Queue testing scopes
                 if "scopes" in item and isinstance(item["scopes"], list):
                     for scope in item["scopes"]:
                         is_str = scope if isinstance(scope, str) else scope.get("is_number")
                         if not is_str:
                             continue
                         norm = normalize_is_number(is_str)
-                        std = self.db.query(Standard).filter(
-                            (Standard.normalized_is == norm) | (Standard.is_number == is_str)
-                        ).first()
-                        if std:
-                            existing_scope = self.db.query(LaboratoryScope).filter(
-                                LaboratoryScope.laboratory_id == target_lab.id,
-                                LaboratoryScope.standard_id == std.id
-                            ).first()
-                            if not existing_scope:
-                                new_scope = LaboratoryScope(
-                                    laboratory_id=target_lab.id,
-                                    standard_id=std.id,
-                                    product_category=scope.get("product_category") if isinstance(scope, dict) else None,
-                                    testing_capability=scope.get("testing_capability", "Complete Testing Scope") if isinstance(scope, dict) else "Complete Scope",
-                                    valid_until=valid_until
-                                )
-                                self.db.add(new_scope)
+                        std_id = standards_by_norm.get(norm)
+                        if std_id:
+                            pending_scopes.append((target_lab, std_id, scope, valid_until))
 
                 self.upserted += 1
+                batch_counter += 1
+                if batch_counter >= 100:
+                    self.db.flush()
+                    batch_counter = 0
+
+            self.db.flush()
+
+            # Process queued scopes
+            for target_lab, std_id, scope, valid_until in pending_scopes:
+                scope_key = (target_lab.id, std_id)
+                if scope_key not in existing_scopes:
+                    new_scope = LaboratoryScope(
+                        laboratory_id=target_lab.id,
+                        standard_id=std_id,
+                        product_category=scope.get("product_category") if isinstance(scope, dict) else None,
+                        testing_capability=scope.get("testing_capability", "Complete Testing Scope") if isinstance(scope, dict) else "Complete Scope",
+                        valid_until=valid_until
+                    )
+                    self.db.add(new_scope)
+                    existing_scopes.add(scope_key)
 
             self.db.commit()
             self.finish_run(run, status="Completed")

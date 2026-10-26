@@ -17,6 +17,20 @@ class StandardsIngestor(BaseIngestor):
     def ingest_records(self, records: List[Dict[str, Any]]) -> Dict[str, Any]:
         run = self.start_run()
         try:
+            # High-performance bulk in-memory index
+            existing_standards = {s.normalized_is: s for s in self.db.query(Standard).all()}
+            existing_relationships = {
+                (r.standard_id, r.related_is_number, r.relationship_type)
+                for r in self.db.query(
+                    StandardRelationship.standard_id,
+                    StandardRelationship.related_is_number,
+                    StandardRelationship.relationship_type
+                ).all()
+            }
+
+            batch_counter = 0
+            pending_relationships = []
+
             for item in records:
                 self.processed += 1
                 is_num = item.get("is_number", "").strip()
@@ -28,9 +42,7 @@ class StandardsIngestor(BaseIngestor):
                     continue
 
                 norm_is = normalize_is_number(is_num)
-                existing = self.db.query(Standard).filter(
-                    (Standard.is_number == is_num) | (Standard.normalized_is == norm_is)
-                ).first()
+                existing = existing_standards.get(norm_is)
 
                 pub_year = item.get("publication_year")
                 if pub_year and isinstance(pub_year, str) and pub_year.isdigit():
@@ -66,30 +78,40 @@ class StandardsIngestor(BaseIngestor):
                         verification_date=datetime.utcnow()
                     )
                     self.db.add(new_std)
-                    self.db.flush()
+                    existing_standards[norm_is] = new_std
                     target_std = new_std
 
-                # Handle relationships if provided
+                # Queue relationships
                 if "relationships" in item and isinstance(item["relationships"], list):
                     for rel in item["relationships"]:
                         rel_num = rel.get("related_is_number", "").strip()
                         rel_type = rel.get("relationship_type", "refers_to")
+                        desc = rel.get("description")
                         if rel_num:
-                            exists_rel = self.db.query(StandardRelationship).filter(
-                                StandardRelationship.standard_id == target_std.id,
-                                StandardRelationship.related_is_number == rel_num,
-                                StandardRelationship.relationship_type == rel_type
-                            ).first()
-                            if not exists_rel:
-                                new_rel = StandardRelationship(
-                                    standard_id=target_std.id,
-                                    related_is_number=rel_num,
-                                    relationship_type=rel_type,
-                                    description=rel.get("description")
-                                )
-                                self.db.add(new_rel)
+                            pending_relationships.append((target_std, rel_num, rel_type, desc))
 
                 self.upserted += 1
+                batch_counter += 1
+
+                # Flush in chunks of 500 for memory efficiency
+                if batch_counter >= 500:
+                    self.db.flush()
+                    batch_counter = 0
+
+            self.db.flush()
+
+            # Process queued relationships now that all standards have IDs
+            for target_std, rel_num, rel_type, desc in pending_relationships:
+                rel_key = (target_std.id, rel_num, rel_type)
+                if rel_key not in existing_relationships:
+                    new_rel = StandardRelationship(
+                        standard_id=target_std.id,
+                        related_is_number=rel_num,
+                        relationship_type=rel_type,
+                        description=desc
+                    )
+                    self.db.add(new_rel)
+                    existing_relationships.add(rel_key)
 
             self.db.commit()
             self.finish_run(run, status="Completed")
