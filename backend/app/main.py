@@ -42,10 +42,10 @@ app = FastAPI(
     lifespan=lifespan
 )
 
-# CORS setup
+# CORS setup (uses settings.CORS_ORIGINS which retains localhost and merges production domains)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=settings.CORS_ORIGINS,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
