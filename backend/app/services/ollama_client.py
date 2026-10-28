@@ -1,20 +1,15 @@
-```python
+
 import os
 import time
 from typing import Optional, List, Dict, Any
 
 import httpx
 
-from backend.app.config import settings
-
 
 class OllamaClient:
     """
-    Backward-compatible client that uses the Groq API.
-
-    Keeping the class and instance names unchanged allows existing
-    imports such as `from backend.app.ollama_client import ollama_client`
-    to continue working.
+    Backward-compatible client that uses Groq's OpenAI-compatible API.
+    The existing class name is retained to avoid breaking imports elsewhere.
     """
 
     def __init__(
@@ -36,15 +31,16 @@ class OllamaClient:
             "llama-3.3-70b-versatile",
         )
 
-        self.api_key = os.getenv("GROQ_API_KEY", "")
         self.timeout = timeout or float(
             os.getenv("GROQ_TIMEOUT_SECONDS", "60")
         )
 
     async def check_health(self) -> Dict[str, Any]:
-        """Check whether Groq credentials and API access are configured."""
+        """Check whether Groq credentials and API access are working."""
 
-        if not self.api_key:
+        api_key = os.getenv("GROQ_API_KEY")
+
+        if not api_key:
             return {
                 "status": "unavailable",
                 "ollama_reachable": False,
@@ -52,56 +48,55 @@ class OllamaClient:
                 "available_models": [],
                 "fallback_mode_active": True,
                 "diagnostic_message": (
-                    "GROQ_API_KEY is missing from the backend environment."
+                    "GROQ_API_KEY is not configured."
                 ),
             }
 
         try:
-            timeout = httpx.Timeout(10.0)
+            timeout = httpx.Timeout(10.0, connect=5.0)
 
             async with httpx.AsyncClient(timeout=timeout) as client:
                 response = await client.get(
                     f"{self.base_url}/models",
                     headers={
-                        "Authorization": f"Bearer {self.api_key}"
+                        "Authorization": f"Bearer {api_key}",
                     },
                 )
 
-            if response.status_code == 200:
-                data = response.json()
-                models = [
-                    item.get("id", "")
-                    for item in data.get("data", [])
-                ]
-
-                model_found = self.model in models
-
+            if response.status_code != 200:
                 return {
-                    "status": "healthy" if model_found else "degraded",
-                    "ollama_reachable": True,
+                    "status": "unavailable",
+                    "ollama_reachable": False,
                     "configured_model": self.model,
-                    "available_models": models,
-                    "fallback_mode_active": not model_found,
+                    "available_models": [],
+                    "fallback_mode_active": True,
                     "diagnostic_message": (
-                        "Groq API connected and configured model is available."
-                        if model_found
-                        else (
-                            f"Groq API is reachable, but model "
-                            f"'{self.model}' was not found in the available "
-                            "model list. Check the Groq Console for supported "
-                            "models available to your account."
-                        )
+                        f"Groq API returned HTTP {response.status_code}."
                     ),
                 }
 
+            models_data = response.json().get("data", [])
+            models = [
+                item.get("id", "")
+                for item in models_data
+                if item.get("id")
+            ]
+
+            model_found = self.model in models
+
             return {
-                "status": "unavailable",
-                "ollama_reachable": False,
+                "status": "healthy" if model_found else "degraded",
+                "ollama_reachable": True,
                 "configured_model": self.model,
-                "available_models": [],
-                "fallback_mode_active": True,
+                "available_models": models,
+                "fallback_mode_active": not model_found,
                 "diagnostic_message": (
-                    f"Groq API returned HTTP {response.status_code}."
+                    "Groq API connected successfully."
+                    if model_found
+                    else (
+                        "Groq API connected, but the configured model "
+                        "was not found. Check GROQ_MODEL in Render."
+                    )
                 ),
             }
 
@@ -122,14 +117,15 @@ class OllamaClient:
         messages: List[Dict[str, str]],
         temperature: float = 0.2,
     ) -> Dict[str, Any]:
-        """Send a chat completion request to Groq."""
+        """Send a chat request to Groq and return the generated answer."""
 
         start_time = time.time()
+        api_key = os.getenv("GROQ_API_KEY")
 
-        if not self.api_key:
+        if not api_key:
             return {
                 "content": "",
-                "latency_ms": 0,
+                "latency_ms": int((time.time() - start_time) * 1000),
                 "model": self.model,
                 "success": False,
                 "error": "GROQ_API_KEY is not configured.",
@@ -143,13 +139,16 @@ class OllamaClient:
         }
 
         try:
-            async with httpx.AsyncClient(
-                timeout=httpx.Timeout(self.timeout)
-            ) as client:
+            timeout = httpx.Timeout(
+                self.timeout,
+                connect=10.0,
+            )
+
+            async with httpx.AsyncClient(timeout=timeout) as client:
                 response = await client.post(
                     f"{self.base_url}/chat/completions",
                     headers={
-                        "Authorization": f"Bearer {self.api_key}",
+                        "Authorization": f"Bearer {api_key}",
                         "Content-Type": "application/json",
                     },
                     json=payload,
@@ -158,17 +157,52 @@ class OllamaClient:
                 response.raise_for_status()
                 data = response.json()
 
-                content = (
-                    data.get("choices", [{}])[0]
-                    .get("message", {})
-                    .get("content", "")
-                )
+            choices = data.get("choices", [])
+            content = (
+                choices[0].get("message", {}).get("content", "")
+                if choices
+                else ""
+            )
 
-                return {
-                    "content": content,
-                    "latency_ms": int(
-                        (time.time() - start_time) * 1000
-                    ),
-                    "model": self.model,
-                    "success": bool(conten
-```
+            if not content:
+                raise ValueError("Groq returned an empty response.")
+
+            return {
+                "content": content,
+                "latency_ms": int((time.time() - start_time) * 1000),
+                "model": data.get("model", self.model),
+                "success": True,
+            }
+
+        except httpx.HTTPStatusError as exc:
+            status_code = exc.response.status_code
+
+            if status_code == 401:
+                error = "Groq API authentication failed. Check the API key."
+            elif status_code == 429:
+                error = "Groq rate limit or quota reached. Try again later."
+            else:
+                error = f"Groq API returned HTTP {status_code}."
+
+            return {
+                "content": "",
+                "latency_ms": int((time.time() - start_time) * 1000),
+                "model": self.model,
+                "success": False,
+                "error": error,
+            }
+
+        except Exception as exc:
+            return {
+                "content": "",
+                "latency_ms": int((time.time() - start_time) * 1000),
+                "model": self.model,
+                "success": False,
+                "error": f"Groq request failed: {type(exc).__name__}",
+            }
+
+
+# Keep the existing import name so other backend modules remain compatible.
+ollama_client = OllamaClient()
+
+
