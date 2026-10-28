@@ -1,134 +1,174 @@
+```python
+import os
 import time
-import socket
-from urllib.parse import urlparse
-import httpx
 from typing import Optional, List, Dict, Any
+
+import httpx
+
 from backend.app.config import settings
 
-def is_service_port_open(url: str, timeout: float = 0.1) -> bool:
-    """Pre-flight socket check to avoid long OS-level SYN retransmission delays."""
-    try:
-        parsed = urlparse(url)
-        host = parsed.hostname or "127.0.0.1"
-        port = parsed.port or 11434
-        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-            s.settimeout(timeout)
-            return s.connect_ex((host, port)) == 0
-    except Exception:
-        return False
 
 class OllamaClient:
+    """
+    Backward-compatible client that uses the Groq API.
+
+    Keeping the class and instance names unchanged allows existing
+    imports such as `from backend.app.ollama_client import ollama_client`
+    to continue working.
+    """
+
     def __init__(
         self,
         base_url: Optional[str] = None,
         model: Optional[str] = None,
-        timeout: Optional[float] = None
+        timeout: Optional[float] = None,
     ):
-        self.base_url = (base_url or settings.OLLAMA_BASE_URL).rstrip("/")
-        self.model = model or settings.OLLAMA_MODEL
-        self.timeout = timeout or settings.OLLAMA_TIMEOUT_SECONDS
+        self.base_url = (
+            base_url
+            or os.getenv(
+                "GROQ_BASE_URL",
+                "https://api.groq.com/openai/v1",
+            )
+        ).rstrip("/")
+
+        self.model = model or os.getenv(
+            "GROQ_MODEL",
+            "llama-3.3-70b-versatile",
+        )
+
+        self.api_key = os.getenv("GROQ_API_KEY", "")
+        self.timeout = timeout or float(
+            os.getenv("GROQ_TIMEOUT_SECONDS", "60")
+        )
 
     async def check_health(self) -> Dict[str, Any]:
-        """
-        Pings Ollama service and checks available models with fast pre-flight probe.
-        """
-        if not settings.OLLAMA_ENABLED:
-            return {
-                "status": "unavailable",
-                "ollama_reachable": False,
-                "configured_model": self.model,
-                "available_models": [],
-                "fallback_mode_active": True,
-                "diagnostic_message": f"Ollama local inference is currently disabled or offline (OLLAMA_ENABLED=false). Operating in Deterministic Fast-Path mode with grounded citations."
-            }
+        """Check whether Groq credentials and API access are configured."""
 
-        if not is_service_port_open(self.base_url, timeout=0.1):
+        if not self.api_key:
             return {
                 "status": "unavailable",
                 "ollama_reachable": False,
                 "configured_model": self.model,
                 "available_models": [],
                 "fallback_mode_active": True,
-                "diagnostic_message": f"Ollama daemon is offline at {self.base_url}. Using deterministic fast-path compliance engine."
+                "diagnostic_message": (
+                    "GROQ_API_KEY is missing from the backend environment."
+                ),
             }
 
         try:
-            fast_timeout = httpx.Timeout(connect=1.0, read=2.0, write=1.0, pool=0.5)
-            async with httpx.AsyncClient(timeout=fast_timeout) as client:
-                res = await client.get(f"{self.base_url}/api/tags")
-                if res.status_code == 200:
-                    data = res.json()
-                    models = [m.get("name") for m in data.get("models", [])]
-                    model_found = any(self.model in m for m in models)
-                    return {
-                        "status": "healthy" if model_found else "degraded",
-                        "ollama_reachable": True,
-                        "configured_model": self.model,
-                        "available_models": models,
-                        "fallback_mode_active": not model_found,
-                        "diagnostic_message": "Ollama service connected and operational." if model_found else f"Ollama reachable, but model '{self.model}' is not pulled yet. Run 'ollama pull {self.model}'."
-                    }
-        except Exception as e:
+            timeout = httpx.Timeout(10.0)
+
+            async with httpx.AsyncClient(timeout=timeout) as client:
+                response = await client.get(
+                    f"{self.base_url}/models",
+                    headers={
+                        "Authorization": f"Bearer {self.api_key}"
+                    },
+                )
+
+            if response.status_code == 200:
+                data = response.json()
+                models = [
+                    item.get("id", "")
+                    for item in data.get("data", [])
+                ]
+
+                model_found = self.model in models
+
+                return {
+                    "status": "healthy" if model_found else "degraded",
+                    "ollama_reachable": True,
+                    "configured_model": self.model,
+                    "available_models": models,
+                    "fallback_mode_active": not model_found,
+                    "diagnostic_message": (
+                        "Groq API connected and configured model is available."
+                        if model_found
+                        else (
+                            f"Groq API is reachable, but model "
+                            f"'{self.model}' was not found in the available "
+                            "model list. Check the Groq Console for supported "
+                            "models available to your account."
+                        )
+                    ),
+                }
+
             return {
                 "status": "unavailable",
                 "ollama_reachable": False,
                 "configured_model": self.model,
                 "available_models": [],
                 "fallback_mode_active": True,
-                "diagnostic_message": f"Ollama health check error: {str(e)}"
+                "diagnostic_message": (
+                    f"Groq API returned HTTP {response.status_code}."
+                ),
+            }
+
+        except Exception as exc:
+            return {
+                "status": "unavailable",
+                "ollama_reachable": False,
+                "configured_model": self.model,
+                "available_models": [],
+                "fallback_mode_active": True,
+                "diagnostic_message": (
+                    f"Groq health check failed: {type(exc).__name__}"
+                ),
             }
 
     async def chat(
         self,
         messages: List[Dict[str, str]],
-        temperature: float = 0.2
+        temperature: float = 0.2,
     ) -> Dict[str, Any]:
-        """
-        Sends multi-turn chat messages to Ollama /api/chat.
-        Returns generated content and latency.
-        """
+        """Send a chat completion request to Groq."""
+
         start_time = time.time()
-        if not settings.OLLAMA_ENABLED or not is_service_port_open(self.base_url, timeout=0.1):
+
+        if not self.api_key:
             return {
                 "content": "",
-                "latency_ms": int((time.time() - start_time) * 1000),
+                "latency_ms": 0,
                 "model": self.model,
                 "success": False,
-                "error": "Ollama local inference runtime is offline or disabled"
+                "error": "GROQ_API_KEY is not configured.",
             }
 
-        url = f"{self.base_url}/api/chat"
         payload = {
             "model": self.model,
             "messages": messages,
+            "temperature": temperature,
             "stream": False,
-            "options": {
-                "temperature": temperature
-            }
         }
 
         try:
-            chat_timeout = httpx.Timeout(connect=1.0, read=self.timeout, write=5.0, pool=1.0)
-            async with httpx.AsyncClient(timeout=chat_timeout) as client:
-                res = await client.post(url, json=payload)
-                res.raise_for_status()
-                data = res.json()
-                content = data.get("message", {}).get("content", "")
-                latency_ms = int((time.time() - start_time) * 1000)
+            async with httpx.AsyncClient(
+                timeout=httpx.Timeout(self.timeout)
+            ) as client:
+                response = await client.post(
+                    f"{self.base_url}/chat/completions",
+                    headers={
+                        "Authorization": f"Bearer {self.api_key}",
+                        "Content-Type": "application/json",
+                    },
+                    json=payload,
+                )
+
+                response.raise_for_status()
+                data = response.json()
+
+                content = (
+                    data.get("choices", [{}])[0]
+                    .get("message", {})
+                    .get("content", "")
+                )
+
                 return {
                     "content": content,
-                    "latency_ms": latency_ms,
+                    "latency_ms": int(
+                        (time.time() - start_time) * 1000
+                    ),
                     "model": self.model,
-                    "success": True
-                }
-        except Exception as e:
-            latency_ms = int((time.time() - start_time) * 1000)
-            return {
-                "content": "",
-                "latency_ms": latency_ms,
-                "model": self.model,
-                "success": False,
-                "error": str(e)
-            }
-
-ollama_client = OllamaClient()
+                    "success": bool(conten
+```
